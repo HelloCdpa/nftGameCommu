@@ -10,24 +10,34 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>boardfindAll.jsp 게시글 전체 조회 페이지</h2>
-	<a href="/board/save">게시글 작성</a>
+	<h3> 전체 </h3>
 	
-<form action="/board/search" method="get">
 
-<select name="searchtype">
+<form class="row g-3 container text-center" style="margin-top: 30px;" action="/board/search" method="get">
+<div class="col-auto" >
+<select class="form-select" style="width:100px;height:40px; display:inline;" name="searchtype">
 <option value="b_title">제목</option>
 <option value="m_id">작성자</option>
 </select>
+</div>
 
-<input type="text" name="keyword">
-<input type="submit" value="검색">
+<div class="col-auto">
+<input class="form-control"  type="text" name="keyword">
+</div>
+
+<div class="col-auto">
+<input class="form-control"  type="submit" value="검색">
+</div>
+
+<div class="col-auto">
+<a class="btn btn-outline-success" href="/board/save">게시글 작성</a>
+</div>
 
 </form>
 	
-	<table>
+	<table class="table table-striped table-hover" style="margin-top: 30px;">
 		<tr>	
-			<th>게시글 번호</th>
+			<th>글번호</th>
 			<th>작성자</th>
 			<th>제목</th>
 			<th>내용</th>
@@ -40,21 +50,21 @@
 			<tr>
 				<td>${b.b_number}</td>
 				<td>${b.m_id}</td>
-				<td><a href="/board/boardDetail?b_number=${b.b_number}" type="submit">${b.b_title}</a></td>
+				<td><a class="link-success" href="/board/boardDetail?b_number=${b.b_number}" type="submit">${b.b_title}</a></td>
 				<td>${b.b_contents}</td>
 				<td>${b.b_filename}</td>	
 				<td>${b.b_hits}</td>	
 				<c:if test="${sessionScope.loginId eq b.m_id}">		
-				<td><a href="/board/boardUpdate?b_number=${b.b_number}" type="submit">수정</a></td>
+				<td><a class="link-success" href="/board/boardUpdate?b_number=${b.b_number}" type="submit">수정</a></td>
 				</c:if>
 				<c:if test="${sessionScope.loginId eq b.m_id || sessionScope.loginId eq 'admin'}">		
-				<td><a href="/board/boardDelete?b_number=${b.b_number}" type="submit">삭제</a></td>
+				<td><a class="link-success" href="/board/boardDelete?b_number=${b.b_number}" type="submit">삭제</a></td>
 				</c:if>
 
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/">홈으로 돌아가기</a>
+	<a href="/" class="link-success">홈으로 돌아가기</a>
 
 	<div>
 		<c:choose>

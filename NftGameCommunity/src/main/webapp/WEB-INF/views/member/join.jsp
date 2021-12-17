@@ -50,8 +50,7 @@ input {
 <body>
 
 
-	<form class="d-grid gap-2 col-6 mx-auto m-3" action="join"
-		method="post" enctype="multipart/form-data">
+	<form class="d-grid gap-2 col-6 mx-auto m-3" action="join" method="post">
 		<div class="container"
 			style="background-color: rgb(191, 224, 196); border-radius: 1rem;">
 			<h2 class="text-center">회원가입</h2>
@@ -72,7 +71,7 @@ input {
 				 
 				 <label for="m_phone" class="text-start">휴대폰번호</label> 
 				 <input class="form-control" type="text" name="m_phone" id="m_phone"
-				value="010"> 
+				value="010"> <br>
 				
 				<label for="m_likegame" class="text-start">가장 선호하는 nft 게임</label> 
 				
@@ -99,15 +98,13 @@ input {
 				value="nine chronicles"> 
             	<label class="form-check-label" for="nine chronicles">나인 크로니클</label> 
             	</div>
-            	
             	<div class="form-check">
             	 <input class="form-check-input" type="radio" name="m_likegame" id="zodium"
 				value="zodium"> 
             	<label class="form-check-label" for="zodium">조디움</label> 
         		</div>
         		
-        		<input class="form-control" type="file" name="m_profile"
-				id="m_profile" placeholder="프로필사진"> 
+        	
 				
 				<input class="btn btn-outline-success m-3" type="submit" value="회원가입">
 		</div>

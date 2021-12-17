@@ -11,7 +11,7 @@ public class BoardDTO {
 	private String b_title,b_contents,m_id;
 	private long b_number; 
 	private Timestamp b_date;
-	private int b_hits, cate_number, b_like;
+	private int b_hits, cate_number, like_count;
 	private MultipartFile b_file;
 	private String b_filename; 
 }

@@ -6,14 +6,13 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="/resources/css/test.css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>login</title>
+
 </head>
 <body>
-
-    
-    <div class="container text-center" style="background-color: rgb(191, 224, 196); border-radius: 1rem;">
-        <h2>login.jsp</h2> 
-    <form action="login" method="post" class="d-grid gap-2 col-6 mx-auto">
+    <div class="container text-center" style="background-color: rgb(191, 224, 196); border-radius: 1rem; margin-top:50px;">
+        <form action="login" method="post" class="d-grid gap-2 col-6 mx-auto">
+        <h2>로그인</h2> 
 <label for="m_id" class="text-start"> 아이디</label>
 <input class="form-control" type="text" placeholder="아이디 입력"  name="m_id" id="m_id">
 <label for="m_password" class="text-start"> 비밀번호</label>

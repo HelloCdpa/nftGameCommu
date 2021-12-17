@@ -10,7 +10,7 @@ import com.phl.nft.dto.PageDTO;
 
 public interface MemberService {
 
-	public void join(MemberDTO member)throws IllegalStateException, IOException;
+	public void join(MemberDTO member);
 	public String idDuplicate(String m_id);
 	public List<MemberDTO> findAll();
 	List<MemberDTO> pagingList(int page);

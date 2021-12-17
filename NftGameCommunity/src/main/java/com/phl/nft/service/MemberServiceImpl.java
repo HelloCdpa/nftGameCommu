@@ -26,17 +26,8 @@ public class MemberServiceImpl implements MemberService{
 	private HttpSession session;
 	
 	@Override
-	public void join(MemberDTO member) throws IllegalStateException, IOException {
-		MultipartFile m_profile = member.getM_profile();
-		String m_profilename = m_profile.getOriginalFilename();
-		m_profilename = System.currentTimeMillis() + "-" + m_profilename;
-		System.out.println("m_profilename: " + m_profilename);
-		String savePath = "D:\\development_Phl\\source\\spring\\MemberBoardProject\\src\\main\\webapp\\resources\\profile_upload\\"+m_profilename;
-		if(!m_profile.isEmpty()) {
-			m_profile.transferTo(new File(savePath));
-		}
+	public void join(MemberDTO member) {
 		
-		member.setM_profilename(m_profilename);
 		mr.join(member);
 		
 		}
