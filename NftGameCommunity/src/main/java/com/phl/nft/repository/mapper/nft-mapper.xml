@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="nft"> 
+ 	<insert id="nftSave" parameterType="nft">
+ 		insert into nft_table(nft_name, nft_filename, nft_price, nft_date) 
+ 			values(#{nft_name},#{nft_filename},#{nft_price},now())
+ 	</insert>
+ 	
+ 	<select id="nftFindAll" resultType="nft">
+ 	
+ 		select * from nft_table
+ 	
+ 	</select>
+ 	
+ 	<select id="nftDetail" parameterType="long" resultType="nft">
+ 	
+ 		select * from nft_table where nft_number = ${nft_number}
+ 	
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	</mapper>

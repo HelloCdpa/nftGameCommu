@@ -6,5 +6,6 @@
 		<typeAlias alias="member" type="com.phl.nft.dto.MemberDTO"/>
 		<typeAlias alias="board" type="com.phl.nft.dto.BoardDTO"/>
 		<typeAlias alias="comment" type="com.phl.nft.dto.CommentDTO"/>
+		<typeAlias alias="nft" type="com.phl.nft.dto.NftDTO"/>
 	</typeAliases>
 </configuration>

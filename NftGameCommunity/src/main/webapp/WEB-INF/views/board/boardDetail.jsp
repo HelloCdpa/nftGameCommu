@@ -14,36 +14,26 @@
 	<h2>게시글 상세 조회</h2>
 	<a href="../">홈으로 돌아가기</a>
 
+	<div class="container">
 	<table class="table">
 		<tr>
-			<td>작성자</td>
-			<td>${b.m_id}</td>
-		</tr>
-		<tr>
-			<td>제목</td>
 			<td>${b.b_title}</td>
 		</tr>
 		<tr>
-			<td>사진</td>
-			<td><img alt="" src="/resources/board_upload/${b.b_filename}"
-				width="300" height="300"></td>
+			<td>작성자 : ${b.m_id} 조회 ${b.b_hits} | 추천 ${b.like_count} </td>
 		</tr>
-
 		<tr>
-			<td>내용</td>
-			<td>${b.b_contents}</td>
+			<td><img alt="" src="/resources/board_upload/${b.b_filename}"
+				width="300" height="300"> <br> ${b.b_contents}</td>
 		</tr>
 		
-		<tr>
-			<td>조회수</td>
-			<td>${b.b_hits}</td>
-		</tr>
 	</table>
 
 	<div id="comment-write">
 		<input type="text" id="m_id" value="${sessionScope.loginId}" readonly="readonly"> 
 		<input type="text" id="c_contents" placeholder="댓글내용">
 		<button id="comment-write-btn">댓글등록</button>
+	</div>
 	</div>
 	<!-- 댓글 목록 출력 -->
 	<div id="comment-list">

@@ -8,10 +8,11 @@
 	<link href="/resources/css/test.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
 </head>
 <body>
 	<h3> 전체 </h3>
-	
 
 <form class="row g-3 container text-center" style="margin-top: 30px;" action="/board/search" method="get">
 <div class="col-auto" >
@@ -38,9 +39,8 @@
 	<table class="table table-striped table-hover" style="margin-top: 30px;">
 		<tr>	
 			<th>글번호</th>
-			<th>작성자</th>
 			<th>제목</th>
-			<th>내용</th>
+			<th>작성자</th>
 			<th>파일</th>
 			<th>조회수</th>
 			<th></th>
@@ -49,9 +49,8 @@
 		<c:forEach items="${bList}" var="b">
 			<tr>
 				<td>${b.b_number}</td>
-				<td>${b.m_id}</td>
 				<td><a class="link-success" href="/board/boardDetail?b_number=${b.b_number}" type="submit">${b.b_title}</a></td>
-				<td>${b.b_contents}</td>
+				<td>${b.m_id}</td>
 				<td>${b.b_filename}</td>	
 				<td>${b.b_hits}</td>	
 				<c:if test="${sessionScope.loginId eq b.m_id}">		
