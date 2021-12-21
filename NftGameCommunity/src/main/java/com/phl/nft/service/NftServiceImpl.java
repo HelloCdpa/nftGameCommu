@@ -46,6 +46,17 @@ public class NftServiceImpl implements NftService {
 		
 		return nr.nftDetail(nft_number);
 	}
+	
+	@Override
+	public void nftDelete(long nft_number) {
+		nr.nftDelete(nft_number);
+	}
+
+	@Override
+	public void nftUpdate(NftDTO nft) {
+		nr.nftUpdate(nft);
+		
+	}
 
 	
 	

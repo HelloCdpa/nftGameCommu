@@ -26,6 +26,14 @@ public class NftRepository {
 		return sql.selectOne("nft.nftDetail", nft_number);
 	}
 
+	public void nftDelete(long nft_number) {
+		sql.delete("nft.nftDelete", nft_number);
+	}
+
+	public void nftUpdate(NftDTO nft) {
+		sql.update("nft.nftUpdate", nft);
+	}
+
 	
 
 }

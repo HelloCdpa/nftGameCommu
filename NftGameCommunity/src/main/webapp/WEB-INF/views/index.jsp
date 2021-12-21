@@ -76,7 +76,7 @@
   <div class="card text-white my-5 py-4 text-center bg-gradient border-success">
       <div class="card-body"><p class="text-white m-0">
        <c:if test="${sessionScope.loginId eq 'admin'}">
-            <a class="btn btn-outline-success" href="/member/paging?page=${page}"> 관리자 페이지 이동 </a>
+            <a class="btn btn-outline-success" href="/member/paging"> 관리자 페이지 이동 </a>
             <a class="btn btn-outline-danger" href="/nft/nftSave"> 관리자 nft상품 업로드 </a>
         </c:if>
         

@@ -8,22 +8,60 @@
 	<link href="/resources/css/test.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
-	<h2>게시글 상세 조회</h2>
-	<a href="../">홈으로 돌아가기</a>
+	 <header class="fixed-top bg-gradient shadow bg-gradient"style="background-color: rgb(191, 224, 196);">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"> <img src="/resources/img/logo.png" alt="" width="30" height="30"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="../">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/board/paging?page=${page}">커뮤니티</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/nft/market">NFT</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">포인트</a>
+                  </li>
+                </ul>
 
-	<div class="container">
-	<table class="table">
-		<tr>
+          
+                <ul class="nav nav-pills">
+                  <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/member/login">로그인</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/member/logout">로그아웃</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/member/join">회원가입</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          </header>
+
+	<div class="container text-center" style="margin-top: 100px;">
+	<table class="table bg-success p-2 text-dark bg-opacity-10 bg-gradient" >
+		<tr class="border border-secondary border-2 bg-success p-2 bg-opacity-50">
 			<td>${b.b_title}</td>
 		</tr>
-		<tr>
+		<tr class="border border-secondary">
 			<td>작성자 : ${b.m_id} 조회 ${b.b_hits} | 추천 ${b.like_count} </td>
 		</tr>
-		<tr>
-			<td><img alt="" src="/resources/board_upload/${b.b_filename}"
+		<tr class="border border-secondary">
+			<td><img alt="" src="/resources/board_uploadfile/${b.b_filename}"
 				width="300" height="300"> <br> ${b.b_contents}</td>
 		</tr>
 		

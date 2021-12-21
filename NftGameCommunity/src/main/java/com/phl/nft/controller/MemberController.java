@@ -55,7 +55,7 @@ public class MemberController {
 	List<MemberDTO> memberList = ms.pagingList(page);
 	model.addAttribute("mList", memberList);
 	model.addAttribute("paging", paging);
-	return "member/findAll";
+	return "member/memberFindAll";
 	}
 	
 	

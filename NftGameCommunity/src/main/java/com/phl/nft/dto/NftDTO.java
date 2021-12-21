@@ -11,7 +11,7 @@ public class NftDTO {
 
 	private long nft_number, nft_price;
 	private MultipartFile nft_file;
-	private String nft_filename, nft_name;
+	private String nft_filename, nft_name, nft_intro ;
 	private Timestamp nft_date;
 	private String m_id;
 	

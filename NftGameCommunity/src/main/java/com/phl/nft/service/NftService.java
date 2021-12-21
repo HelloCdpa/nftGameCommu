@@ -13,4 +13,8 @@ public interface NftService {
 
 	NftDTO nftDetail(long nft_number);
 
+	void nftDelete(long nft_number);
+
+	void nftUpdate(NftDTO nft);
+
 }

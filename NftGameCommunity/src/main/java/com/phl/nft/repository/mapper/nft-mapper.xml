@@ -4,8 +4,8 @@
  
  <mapper namespace="nft"> 
  	<insert id="nftSave" parameterType="nft">
- 		insert into nft_table(nft_name, nft_filename, nft_price, nft_date) 
- 			values(#{nft_name},#{nft_filename},#{nft_price},now())
+ 		insert into nft_table(nft_name, nft_filename, nft_price, nft_date, nft_intro) 
+ 			values(#{nft_name},#{nft_filename},#{nft_price},now(), #{nft_intro})
  	</insert>
  	
  	<select id="nftFindAll" resultType="nft">
@@ -16,13 +16,21 @@
  	
  	<select id="nftDetail" parameterType="long" resultType="nft">
  	
- 		select * from nft_table where nft_number = ${nft_number}
+ 		select * from nft_table where nft_number = #{nft_number}
  	
  	</select>
  	
+ 	<delete id="nftDelete" parameterType="long">
  	
+ 		delete from nft_table where nft_number = #{nft_number}
  	
+ 	</delete>
  	
+ 	<update id="nftUpdate" parameterType="nft">
+ 	
+ 	update nft_table set nft_name = #{nft_name}, nft_price=#{nft_price}, nft_intro=#{nft_intro} where nft_number = #{nft_number} 
+ 	
+ 	</update>
  	
  	
  	

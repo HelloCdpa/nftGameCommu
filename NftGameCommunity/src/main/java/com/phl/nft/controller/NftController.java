@@ -31,7 +31,7 @@ public class NftController {
 	@RequestMapping(value = "nftSave", method = RequestMethod.POST)
 	public String nftSave(@ModelAttribute NftDTO nft) throws IllegalStateException, IOException{
 		ns.nftSave(nft);
-		return "redirect:/board/paging";
+		return "redirect:/nft/market";
 	}
 	
 	
@@ -48,6 +48,28 @@ public class NftController {
 		model.addAttribute("nft",nft);
 		return "/nft/nftDetail";
 	}
+	
+	@RequestMapping(value = "nftDelete", method = RequestMethod.GET)
+	public String nftdelete(Model model, @RequestParam ("nft_number") long nft_number) {
+		 ns.nftDelete(nft_number);
+		
+		return "redirect:/nft/market";
+	}
+	
+	@RequestMapping(value = "nftUpdate", method = RequestMethod.GET)
+	public String nftUpdateForm(Model model, @RequestParam ("nft_number") long nft_number) {
+		NftDTO nft = ns.nftDetail(nft_number);
+		model.addAttribute("nft",nft);
+		return "/nft/nftUpdate";
+	}
+	
+	@RequestMapping(value = "nftUpdate", method = RequestMethod.POST)
+	public String nftUpdate(Model model, @ModelAttribute NftDTO nft) {
+		ns.nftUpdate(nft);
+	
+		return "redirect:/nft/market";
+	}
+	
 	
 	
 	

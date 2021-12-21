@@ -27,7 +27,7 @@ public class BoardServiceImpl implements BoardService {
 		b_filename = System.currentTimeMillis() + "-" + b_filename;
 		System.out.println("b_filename: " + b_filename);
 		// 파일 저장하기 
-		String savePath = "D:\\development_Phl\\source\\spring\\MemberBoardProject\\src\\main\\webapp\\resources\\board_upload\\"+b_filename;
+		String savePath = "D:\\development_Phl\\source\\spring\\NftGameCommunity\\src\\main\\webapp\\resources\\board_uploadfile\\"+b_filename;
 		if(!b_file.isEmpty()) {
 			b_file.transferTo(new File(savePath));
 		}

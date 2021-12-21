@@ -17,7 +17,7 @@
  	
  	</select>
  	
- 	<delete id="memeberDelete" parameterType="long">
+ 	<delete id="memberDelete" parameterType="long">
  		delete from member_table where m_number=#{m_number}
  	</delete>
  	
