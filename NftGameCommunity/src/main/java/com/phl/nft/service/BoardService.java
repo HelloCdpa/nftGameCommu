@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.phl.nft.dto.BoardDTO;
+import com.phl.nft.dto.CateDTO;
 import com.phl.nft.dto.PageDTO;
 
 public interface BoardService {
@@ -15,5 +16,6 @@ public interface BoardService {
 	public BoardDTO boardDetail(long b_number);
 	public void boardUpdate(BoardDTO board) throws IllegalStateException, IOException;
 	public List<BoardDTO> search(String searchtype, String keyword);
+	void cateSave(CateDTO cate);
 
 }

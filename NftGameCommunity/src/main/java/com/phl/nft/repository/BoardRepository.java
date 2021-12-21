@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.phl.nft.dto.BoardDTO;
+import com.phl.nft.dto.CateDTO;
 
 
 @Repository
@@ -55,6 +56,11 @@ public class BoardRepository {
 
 	public List<BoardDTO> search(Map<String, String> searchParam) {
 		return sql.selectList("Board.search", searchParam);
+	}
+
+	public void cateSave(CateDTO cate) {
+		sql.insert("cate.cateSave",cate);
+		
 	}
 	
 	

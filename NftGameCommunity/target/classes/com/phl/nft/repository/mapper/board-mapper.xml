@@ -5,12 +5,11 @@
 <mapper namespace="Board">
 	<insert id="boardSave" parameterType="board">
 		insert into board_table(m_id,
-		b_title, b_contents, b_date,b_filename)
-		values(#{m_id},#{b_title},#{b_contents},now(),#{b_filename})
+		b_title, b_contents, b_date,b_filename, cate_number)
+		values(#{m_id},#{b_title},#{b_contents},now(),#{b_filename},#{cate_number})
 	</insert>
 	<select id="boardFindAll" resultType="board">
 		select * from board_table
-
 	</select>
 
 	<delete id="boardDelete" parameterType="long">

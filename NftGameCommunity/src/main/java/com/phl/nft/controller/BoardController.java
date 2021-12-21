@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.phl.nft.dto.BoardDTO;
+import com.phl.nft.dto.CateDTO;
 import com.phl.nft.dto.PageDTO;
 import com.phl.nft.service.BoardServiceImpl;
 
@@ -31,6 +32,7 @@ public class BoardController {
 	@RequestMapping(value = "boardFindAll", method = RequestMethod.GET)
 	public String boardFindAll(Model model){
 		List<BoardDTO> bList = bs.boardFindAll();
+		
 		model.addAttribute("bList",bList);
 		return "/board/paging";
 	}
@@ -91,7 +93,13 @@ public class BoardController {
 		return "/board/boardDetail";
 	}
 	
-	
+	@RequestMapping(value = "cateSave", method = RequestMethod.GET)
+	public String cateSave( @ModelAttribute CateDTO cate) {
+		
+		bs.cateSave(cate);
+		
+		return "redirect:/board/paging";
+	}
 	
 	
 	

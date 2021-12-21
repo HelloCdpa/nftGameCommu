@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="cate"> 
+ 	<insert id="cateSave" parameterType="cate">
+ 		insert into category_table(cate_name) 
+ 			values(#{cate_name})
+ 	</insert>
+ 	
+ 	<select id="cateFind" parameterType="long" resultType="String">
+ 	select cate_name from category_table where cate_number=#{cate_number}
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	</mapper>

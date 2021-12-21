@@ -74,11 +74,13 @@
 <a class="btn btn-outline-success" href="/board/save">게시글 작성</a>
 </div>
 
+
 </form>
 	
 	<table class="table table-striped table-hover" style="margin-top: 30px;">
 		<tr>	
 			<th>글번호</th>
+			<th>카테고리</th>
 			<th>제목</th>
 			<th>작성자</th>
 			<th>파일</th>
@@ -89,6 +91,7 @@
 		<c:forEach items="${bList}" var="b">
 			<tr>
 				<td>${b.b_number}</td>
+				<td>${b.cate_number}</td>
 				<td><a class="link-success" href="/board/boardDetail?b_number=${b.b_number}" type="submit">${b.b_title}</a></td>
 				<td>${b.m_id}</td>
 				<td>${b.b_filename}</td>	
@@ -103,7 +106,18 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/" class="link-success">홈으로 돌아가기</a>
+
+	<c:if test="${sessionScope.loginId eq 'admin'}">
+	<form action="/board/cateSave" method="get" class="row g-3" style="margin-left: 1cm">
+	<div class="col-auto">
+	<input type="text" name="cate_name" class="form-control" style="width:300px;" placeholder="추가할 카테고리 입력">
+	</div>
+	<div class="col-auto">
+	<input type="submit" class="btn btn-outline-danger" value="카테고리 추가">
+	</div>
+	</form>	
+	</c:if>
+
 
 	<div>
 		<c:choose>
@@ -141,4 +155,5 @@
 
 
 </body>
+
 </html>

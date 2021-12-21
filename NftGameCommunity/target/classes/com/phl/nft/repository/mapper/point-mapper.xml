@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="point"> 
+ 	<insert id="pointSave" parameterType="point">
+ 		insert into point_table(p_point, p_type, p_pointdate, m_id) 
+ 			values(#{p_point},#{p_type},now(), #{m_id})
+ 	</insert>
+ 	
+ 	<select id="pointFindAll" resultType="point">
+ 	
+ 		select * from point_table
+ 	
+ 	</select>
+ 	</mapper>

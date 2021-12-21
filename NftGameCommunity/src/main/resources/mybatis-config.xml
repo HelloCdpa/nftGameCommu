@@ -7,5 +7,8 @@
 		<typeAlias alias="board" type="com.phl.nft.dto.BoardDTO"/>
 		<typeAlias alias="comment" type="com.phl.nft.dto.CommentDTO"/>
 		<typeAlias alias="nft" type="com.phl.nft.dto.NftDTO"/>
+		<typeAlias alias="point" type="com.phl.nft.dto.PointDTO"/>
+		<typeAlias alias="cate" type="com.phl.nft.dto.CateDTO"/>
+		<typeAlias alias="like" type="com.phl.nft.dto.LikeDTO"/>
 	</typeAliases>
 </configuration>

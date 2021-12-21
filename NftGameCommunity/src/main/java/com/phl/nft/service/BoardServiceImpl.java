@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.phl.nft.dto.BoardDTO;
+import com.phl.nft.dto.CateDTO;
 import com.phl.nft.dto.PageDTO;
 import com.phl.nft.repository.BoardRepository;
 
@@ -121,6 +122,13 @@ public class BoardServiceImpl implements BoardService {
 		searchParam.put("word", keyword);
 		List<BoardDTO> bList = br.search(searchParam);
 		return bList;
+	}
+
+
+	@Override
+	public void cateSave(CateDTO cate) {
+		br.cateSave(cate);
+		
 	}
 	
 	
