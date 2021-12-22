@@ -7,6 +7,7 @@ public class LikeDTO {
 
 	private String m_id;
 	private long like_number, b_number;
+	private int like_check;
 
 	
 }
