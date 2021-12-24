@@ -21,7 +21,10 @@ public class BoardServiceImpl implements BoardService {
 	private BoardRepository br;
 
 	@Override
-	public void boardSave(BoardDTO board) throws IllegalStateException, IOException{
+	public void boardSave(BoardDTO board)throws IllegalStateException, IOException{
+		
+		br.updatePoint(board.getM_id(),50);
+		br.boardPoint(board.getM_id(),50,"게시물 적립");
 		
 		MultipartFile b_file = board.getB_file();
 		String b_filename = b_file.getOriginalFilename();
@@ -31,13 +34,23 @@ public class BoardServiceImpl implements BoardService {
 		String savePath = "D:\\development_Phl\\source\\spring\\NftGameCommunity\\src\\main\\webapp\\resources\\board_uploadfile\\"+b_filename;
 		if(!b_file.isEmpty()) {
 			b_file.transferTo(new File(savePath));
-		}
+		} 
 		
 		board.setB_filename(b_filename);
 		br.saveFile(board);
 		
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -78,9 +91,6 @@ public class BoardServiceImpl implements BoardService {
 		paging.setStartPage(startPage);
 		paging.setEndPage(endPage);
 		paging.setMaxPage(maxPage);
-
-		
-		System.out.println("paging.toString(): "+ paging.toString());
 
 		return paging;
 	}
@@ -130,12 +140,53 @@ public class BoardServiceImpl implements BoardService {
 		br.cateSave(cate);
 		
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+	@Override
+	public List<BoardDTO> findCate(int cate_number) {
+		return br.findCate(cate_number);
+	}
+
+
+@Override
+	public CateDTO cateName(int cate_number) {
+		return br.cateName(cate_number);
+	}
+
+
+	@Override
+	public List<BoardDTO> catePagingList(int page, int cate_number) {
+		int pagingStart = (page - 1) * PAGE_LIMIT;
+		Map<String, Integer> pagingParam = new HashMap<String, Integer>();
+		pagingParam.put("start", pagingStart);
+		pagingParam.put("limit", PAGE_LIMIT);
+		pagingParam.put("cate_number", cate_number);
+
+		List<BoardDTO> pagingList = br.catePagingList1(pagingParam);
+		for (BoardDTO b : pagingList) {
+			System.out.println(b.toString());
+		}
+		return pagingList;
+	}
+
+	@Override
+	public PageDTO catePaging(int page, int cate_number) {
+		int boardCount = br.cateBoardCount(cate_number);
+		int maxPage = (int) (Math.ceil((double) boardCount / PAGE_LIMIT));
+		int startPage = (((int) (Math.ceil((double) page / BLOCK_LIMIT))) - 1) * BLOCK_LIMIT + 1;
+		int endPage = startPage + BLOCK_LIMIT - 1;
+		if (endPage > maxPage)
+			endPage = maxPage;
+		PageDTO paging = new PageDTO();
+		paging.setPage(page);
+		paging.setStartPage(startPage);
+		paging.setEndPage(endPage);
+		paging.setMaxPage(maxPage);
+
+
+		return paging;
+	}
 	
 	
 	

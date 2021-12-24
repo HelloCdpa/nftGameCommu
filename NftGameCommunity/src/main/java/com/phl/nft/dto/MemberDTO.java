@@ -10,7 +10,7 @@ public class MemberDTO {
 	private long m_number;
 	private MultipartFile m_profile;
 	private String m_profilename;
-	private int m_point;
+	private long m_point;
 	
 	
 }

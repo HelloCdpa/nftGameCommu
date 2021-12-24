@@ -17,6 +17,7 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public void commentSave(CommentDTO comment) {
 		cr.commentSave(comment);
+		cr.commentPoint(comment.getM_id(),10,"댓글작성 적립");
 	}
 
 	@Override

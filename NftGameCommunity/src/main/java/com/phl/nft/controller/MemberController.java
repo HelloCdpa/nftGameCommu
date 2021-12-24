@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.phl.nft.dto.MemberDTO;
 import com.phl.nft.dto.PageDTO;
+import com.phl.nft.dto.PointDTO;
 import com.phl.nft.service.MemberServiceImpl;
 
 
@@ -109,8 +110,18 @@ public class MemberController {
 	}
 	
 	
-	
-	
+	@RequestMapping(value = "pointView", method = RequestMethod.GET)
+	public String pointViewForm(Model model ,@RequestParam ("m_id") String m_id) {	
+		
+		 List <PointDTO> pList = ms.pointView(m_id);
+		 model.addAttribute("pList", pList);
+		 
+		 MemberDTO member = ms.pointAll(m_id);
+		 model.addAttribute("m", member);
+		 
+		 
+		return "/member/pointView";
+	}
 	
 	
 	

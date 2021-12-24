@@ -17,14 +17,15 @@
 
 <script>
 $(function(){
+
 	// 추천버튼 클릭시(추천 추가 또는 추천 제거)
 	$("#rec_update").click(function(){
 		$.ajax({
 			url: "/board/like",
             type: "POST",
             data: {
-                no: ${content.board_no},
-                id: '${id}'
+                no: ${b.b_title},
+                id: '${sessionScope.loginId}'
             },
             success: function () {
 		        recCount();
@@ -35,10 +36,10 @@ $(function(){
 	// 게시글 추천수
     function recCount() {
 		$.ajax({
-			url: "/expro/RecCount.do",
+			url: "/board/likeCount",
             type: "POST",
             data: {
-                no: ${content.board_no}
+                no: ${b.b_title}
             },
             success: function (count) {
             	$(".rec_count").html(count);
@@ -46,46 +47,10 @@ $(function(){
 		})
     };
     recCount(); // 처음 시작했을 때 실행되도록 해당 함수 호출
-[출처] [JSP/JAVA] 홈페이지 만들기 7 - 좋아요(추천) 기능  구현 방법|작성자 JOKER
     
 </script>
 <body>
-	<header class="fixed-top bg-gradient shadow bg-gradient"
-		style="background-color: rgb(191, 224, 196);">
-		<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#"> <img
-					src="/resources/img/logo.png" alt="" width="30" height="30"></a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarText"
-					aria-controls="navbarText" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarText">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="../">Home</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/board/paging?page=${page}">커뮤니티</a></li>
-						<li class="nav-item"><a class="nav-link" href="/nft/market">NFT</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#">포인트</a></li>
-					</ul>
-
-
-					<ul class="nav nav-pills">
-						<li class="nav-item"><a class="nav-link text-secondary"
-							href="/member/login">로그인</a></li>
-						<li class="nav-item"><a class="nav-link text-secondary"
-							href="/member/logout">로그아웃</a></li>
-						<li class="nav-item"><a class="nav-link text-secondary"
-							href="/member/join">회원가입</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</header>
+	 <jsp:include page="../header.jsp"></jsp:include>
 
 	<div class="container text-center" style="margin-top: 100px;">
 		<table
@@ -95,10 +60,10 @@ $(function(){
 				<td>${b.b_title}</td>
 			</tr>
 			<tr class="border border-secondary">
-				<td>작성자 : ${b.m_id} 조회 ${b.b_hits} | 추천 ${b.like_count}</td>
+				<td>작성자 : ${b.m_id} 조회 ${b.b_hits} | 추천 ${b.like_count} 작성시간 ${b.b_date}</td>
 			</tr>
 			<tr class="border border-secondary">
-				<td><img alt=""
+				<td><img alt="사진이 없어요"
 					src="/resources/board_uploadfile/${b.b_filename}" width="300"
 					height="300"> <br> ${b.b_contents} <br></td>
 			</tr>

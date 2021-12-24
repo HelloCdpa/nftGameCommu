@@ -8,9 +8,13 @@
  			values(#{cate_name})
  	</insert>
  	
- 	<select id="cateFind" parameterType="long" resultType="String">
- 	select cate_name from category_table where cate_number=#{cate_number}
+ 	<select id="cateName" parameterType="int" resultType="cate">
+ 	select * from category_table where cate_number=#{cate_number}
  	</select>
+ 	
+ 	
+ 	
+ 	
  	
  	
  	

@@ -3,14 +3,14 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="point"> 
- 	<insert id="pointSave" parameterType="point">
+ 	<insert id="pointSave" parameterType="java.util.HashMap">
  		insert into point_table(p_point, p_type, p_pointdate, m_id) 
- 			values(#{p_point},#{p_type},now(), #{m_id})
+ 			values(#{p_point},#{p_type},now(),#{m_id})
  	</insert>
  	
- 	<select id="pointFindAll" resultType="point">
+ 	<select id="pointFindAll" resultType="point" parameterType="String">
  	
- 		select * from point_table
+ 		select * from point_table where m_id=#{m_id} order by p_pointdate desc
  	
  	</select>
  	</mapper>

@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.phl.nft.dto.MemberDTO;
 import com.phl.nft.dto.PageDTO;
+import com.phl.nft.dto.PointDTO;
 import com.phl.nft.repository.MemberRepository;
 
 
@@ -125,6 +126,15 @@ public class MemberServiceImpl implements MemberService{
 		
 		member.setM_profilename(m_profilename);
 		mr.memberUpdate(member);
+	}
+
+	@Override
+	public List<PointDTO> pointView(String m_id) {
+		return mr.pointView(m_id);
+	}
+	@Override
+	public MemberDTO pointAll(String m_id) {
+		return mr.pointAll(m_id);
 	}
 	
 	

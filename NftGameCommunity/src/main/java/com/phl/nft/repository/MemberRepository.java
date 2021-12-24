@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.phl.nft.dto.MemberDTO;
+import com.phl.nft.dto.PointDTO;
 
 
 @Repository
@@ -53,6 +54,15 @@ public class MemberRepository {
 
 		public void memberUpdate(MemberDTO member) {
 			sql.update("Member.memberUpdate", member);
+		}
+
+		public List<PointDTO> pointView(String m_id) {
+			return sql.selectList("point.pointFindAll",m_id);
+		}
+
+		public MemberDTO pointAll(String m_id) {
+			
+			return sql.selectOne("Member.pointAll", m_id);
 		}
 	
 	

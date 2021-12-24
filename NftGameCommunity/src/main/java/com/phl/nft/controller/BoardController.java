@@ -1,6 +1,8 @@
 package com.phl.nft.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.phl.nft.dto.BoardDTO;
 import com.phl.nft.dto.CateDTO;
@@ -32,10 +35,13 @@ public class BoardController {
 	@RequestMapping(value = "boardFindAll", method = RequestMethod.GET)
 	public String boardFindAll(Model model){
 		List<BoardDTO> bList = bs.boardFindAll();
-		
 		model.addAttribute("bList",bList);
+		
 		return "/board/paging";
 	}
+	
+	
+	
 	
 	@RequestMapping(value="paging", method=RequestMethod.GET)
 	public String boardPaging(@RequestParam(value="page", required=false, defaultValue="1")int page, Model model) {
@@ -43,6 +49,14 @@ public class BoardController {
 	List<BoardDTO> boardList = bs.boardPagingList(page);
 	model.addAttribute("bList", boardList);
 	model.addAttribute("paging", paging);
+	
+	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    Calendar cal = Calendar.getInstance();
+    cal.add(Calendar.DAY_OF_MONTH, -1); //1일간 보이도록 하기위해서.
+    String nowday = format.format(cal.getTime());
+    
+    model.addAttribute("nowday",nowday);
+    
 	return "/board/boardFindAll";
 	}
 	
@@ -94,13 +108,42 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "cateSave", method = RequestMethod.GET)
-	public String cateSave( @ModelAttribute CateDTO cate) {
+	public String cateSave(@ModelAttribute CateDTO cate) {
 		
 		bs.cateSave(cate);
 		
 		return "redirect:/board/paging";
 	}
 	
+	@RequestMapping(value = "cateBoard", method = RequestMethod.GET)
+	public String cateBoardForm(@RequestParam int cate_number, Model model) {
+		List<BoardDTO> bList =  bs.findCate(cate_number);
+		CateDTO cate = bs.cateName(cate_number);
+		model.addAttribute("bList",bList);
+		model.addAttribute("c",cate);
+		return "/board/catePaging";
+	}
+	
+	@RequestMapping(value="catePaging", method=RequestMethod.GET)
+	public String catePaging(@RequestParam int cate_number,@RequestParam(value="page", required=false, defaultValue="1")int page, Model model) {
+	PageDTO paging = bs.catePaging(page,cate_number);
+	CateDTO cate = bs.cateName(cate_number);
+	List<BoardDTO> bList = bs.catePagingList(page,cate_number);
+	model.addAttribute("bList", bList);
+	model.addAttribute("paging", paging);
+	model.addAttribute("c", cate);
+	
+	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    Calendar cal = Calendar.getInstance();
+    cal.add(Calendar.DAY_OF_MONTH, -1); //1일간 보이도록 하기위해서.
+    String nowday = format.format(cal.getTime());
+    
+    model.addAttribute("nowday",nowday);
+	
+	
+	
+	return "/board/cateBoard";
+	}
 	
 	
 	

@@ -1,5 +1,6 @@
 package com.phl.nft.repository;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ public class BoardRepository {
 
 	public void saveFile(BoardDTO board) {
 		sql.insert("Board.boardSave", board);
+		
 
 	}
 
@@ -64,11 +66,42 @@ public class BoardRepository {
 	}
 	
 	
+	public void updatePoint(String id, int point) {
+	    Map<String, Object> map = new HashMap<String, Object>();
+	    map.put("id", id);
+	    map.put("point", point);
+	    sql.update("Member.updatePoint", map);
+	    }
+
+	public void boardPoint(String m_id, int p_point, String p_type) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("m_id", m_id);
+		 map.put("p_point", p_point);
+		 map.put("p_type", p_type);
+		sql.insert("point.pointSave",map);
+		
+	}
+
+	public List<BoardDTO> findCate(int cate_number) {
+		return sql.selectList("Board.cateFind", cate_number);
+	}
+
+	public CateDTO cateName(int cate_number) {
+		return sql.selectOne("cate.cateName", cate_number);
+	}
+
 	
+	public List<BoardDTO> catePagingList(Map<String, Integer> pagingParam) {
+		return sql.selectList("Board.catePagingList", pagingParam);
+	}
+
+	public List<BoardDTO> catePagingList1(Map<String, Integer> pagingParam) {
+		return sql.selectList("Board.catePagingList1", pagingParam);
+	}
 	
-	
-	
-	
+	public int cateBoardCount(int cate_number) {
+		return sql.selectOne("Board.cateBoardCount",cate_number);
+	}
 	
 	
 	

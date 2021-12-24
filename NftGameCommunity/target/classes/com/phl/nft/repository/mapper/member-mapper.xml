@@ -59,6 +59,18 @@
  	
  	
  	
+ 	<update id="updatePoint"  parameterType="java.util.HashMap">
+	update member_table set m_point = m_point + #{point}
+	where m_id = #{id}
+	</update>
+ 	
+ 	
+ 	<select id="pointAll" parameterType="String" resultType="member">
+		select * from member_table where m_id = #{m_id}
+	</select>
+ 	
+ 	
+ 	
  	
  	</mapper>
  	

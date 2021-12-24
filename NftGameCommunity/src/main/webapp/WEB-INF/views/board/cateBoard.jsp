@@ -13,9 +13,10 @@
     <jsp:include page="../header.jsp"></jsp:include>
 
 <form class="row g-3 container text-center" style="margin-top: 100px;" action="/board/search" method="get">
-<h1>전체 조회</h1>
+<h1>${c.cate_name}</h1>
 
 <div class="btn" role="group" aria-label="Basic example">
+  <a href="/board/paging?page=${page}" type="button" class="btn btn-outline-dark">전체보기</a>
   <a href="/board/catePaging?cate_number=1" type="button" class="btn btn-outline-danger">사이버드래곤</a>
   <a href="/board/catePaging?cate_number=2" type="button" class="btn btn-outline-info">조디움</a>
   <a href="/board/catePaging?cate_number=3" type="button" class="btn btn-outline-warning">솔칙스</a>
@@ -56,28 +57,22 @@
 			<th></th>
 			<th></th>
 		</tr>
-		<c:forEach items="${bList}" var="b" varStatus="status">
+		<c:forEach items="${bList}" var="b">
 			<tr>
 				<td>${b.b_number}</td>
+				
+				<td>
 
-				<td>${b.cate_number} 
-				</td>
+				  ${b.cate_number}
 
-				<td><a class="link-success" href="/board/boardDetail?b_number=${b.b_number}" type="submit">
+				 </td>
 				
-				
-				
-				${b.b_title}</a>
-						<c:if test="${b.b_date>=nowday}">
+				<td><a class="link-success" href="/board/boardDetail?b_number=${b.b_number}" type="submit">${b.b_title}</a>
+				<c:if test="${b.b_date>=nowday}">
 						<img class="upload"
 							src="<c:url value='/resources/img/new.png'/>"
 							style="width: 28px; height: 22px;">
-							</c:if> 
-			
-				
-				
-				
-				</td>
+							</c:if> </td>
 				<td>${b.m_id}</td>
 				<td>${b.b_filename}</td>	
 				<td>${b.b_hits}</td>	

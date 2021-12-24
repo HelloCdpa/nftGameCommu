@@ -8,12 +8,12 @@
  			values(#{m_id},#{b_number})
  	</insert>
  	
- 	<update id="likeCheck" parameterType="HashMap">
+ 	<update id="likeCheck" parameterType="java.util.HashMap">
  	update like_table set like_check = like_check+1
  	where m_id=#{m_id} and b_number=#{b_number}
  	
  	</update>
- 	<update id="likeCancel" parameterType="HashMap">
+ 	<update id="likeCancel" parameterType="java.util.HashMap">
  	update like_table set like_check = 0
  	where m_id=#{m_id} and b_number=#{b_number}
  	

@@ -67,10 +67,28 @@
 		</choose>
 	</sql>
 
+	<select id="cateFind" parameterType="int" resultType="board">
+		select * from board_table where cate_number = #{cate_number}
+	</select>
+	
+	<select id="catePagingList" parameterType="java.util.HashMap"
+		resultType="board">
+		select * from board_table where cate_number = #{cate_number}
+		 order by b_number desc limit
+		#{pagingStart}, 3
+	</select>
 
+	<select id="catePagingList1" parameterType="java.util.HashMap"
+		resultType="board">
+		select * from board_table where cate_number = #{cate_number}
+		order by b_number desc limit
+		#{start}, #{limit}
+	</select>
 
-
-
+<select id="cateBoardCount" parameterType="int" resultType="int">
+		select count(b_number) from
+		board_table where cate_number = #{cate_number}
+	</select>
 
 
 
