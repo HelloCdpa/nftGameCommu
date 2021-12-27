@@ -69,7 +69,10 @@
 		select * from member_table where m_id = #{m_id}
 	</select>
  	
- 	
+ 	<update id="pointCharge"  parameterType="java.util.HashMap">
+	update member_table set m_point = m_point + #{m_point}
+	where m_id = #{m_id}
+	</update>
  	
  	
  	</mapper>

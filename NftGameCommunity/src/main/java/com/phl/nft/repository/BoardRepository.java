@@ -60,10 +60,6 @@ public class BoardRepository {
 		return sql.selectList("Board.search", searchParam);
 	}
 
-	public void cateSave(CateDTO cate) {
-		sql.insert("cate.cateSave",cate);
-		
-	}
 	
 	
 	public void updatePoint(String id, int point) {
@@ -82,6 +78,10 @@ public class BoardRepository {
 		
 	}
 
+	public void cateSave(CateDTO cate) {
+		sql.insert("cate.cateSave",cate);
+		
+	}
 	public List<BoardDTO> findCate(int cate_number) {
 		return sql.selectList("Board.cateFind", cate_number);
 	}

@@ -137,6 +137,13 @@ public class MemberServiceImpl implements MemberService{
 		return mr.pointAll(m_id);
 	}
 	
+	@Override
+	public void pointCharge(String m_id, int m_point) {
+
+		mr.pointCharge(m_id,m_point);
+		mr.memberPointCharge(m_id,m_point,"포인트 충전");
+	}
+	
 	
 	
 

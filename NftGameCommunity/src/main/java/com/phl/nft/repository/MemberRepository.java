@@ -1,5 +1,6 @@
 package com.phl.nft.repository;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,9 +65,22 @@ public class MemberRepository {
 			
 			return sql.selectOne("Member.pointAll", m_id);
 		}
+
+		public void pointCharge(String m_id, int m_point) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			 map.put("m_id", m_id);
+			 map.put("m_point", m_point);
+			sql.update ("Member.pointCharge",map);
+		}
 	
-	
-	
+		public void memberPointCharge(String m_id, int p_point, String p_type) {
+		    Map<String, Object> map = new HashMap<String, Object>();
+		    map.put("m_id", m_id);
+		    map.put("p_point", p_point);
+		    map.put("p_type", p_type);
+		    sql.insert("point.pointSave", map);
+		    }
+
 	
 	
 	

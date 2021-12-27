@@ -123,9 +123,36 @@ public class MemberController {
 		return "/member/pointView";
 	}
 	
+	@RequestMapping(value = "pointCharge", method = RequestMethod.GET)
+	public String pointChargeForm(Model model ,@RequestParam ("m_id") String m_id) {	
+		 
+		return "/member/pointCharge";
+	}
 	
-	
-	
+	@RequestMapping(value = "pointCharge1", method = RequestMethod.POST)
+	public String pointCharge1(@RequestParam ("m_id") String m_id, @RequestParam ("m_point") int m_point) {	
+		System.out.println(m_id +"어디갔니?"+m_point);
+		ms.pointCharge(m_id,m_point);
+		 
+		 
+		return "redirect:/member/pointView?m_id="+m_id;
+	}
+	@RequestMapping(value = "pointCharge2", method = RequestMethod.POST)
+	public String pointCharge2(@RequestParam ("m_id") String m_id, @RequestParam ("m_point") int m_point) {	
+		System.out.println(m_id +"어디갔니?"+m_point);
+		ms.pointCharge(m_id,m_point);
+		 
+		 
+		return "redirect:/member/pointView?m_id="+m_id;
+	}
+	@RequestMapping(value = "pointCharge3", method = RequestMethod.POST)
+	public String pointCharge3(@RequestParam ("m_id") String m_id, @RequestParam ("m_point") int m_point) {	
+		System.out.println(m_id +"어디갔니?"+m_point);
+		ms.pointCharge(m_id,m_point);
+		 
+		 
+		return "redirect:/member/pointView?m_id="+m_id;
+	}
 	
 	
 	

@@ -32,6 +32,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="/member/pointView?m_id=${sessionScope.loginId}">포인트</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/member/pointCharge?m_id=${sessionScope.loginId}">포인트 충전</a>
+                  </li>
                     </c:if>
                 </ul>
           

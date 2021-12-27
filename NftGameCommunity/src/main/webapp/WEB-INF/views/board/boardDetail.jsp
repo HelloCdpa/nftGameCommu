@@ -14,42 +14,46 @@
 <title>Insert title here</title>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
 <script>
-$(function(){
-
-	// 추천버튼 클릭시(추천 추가 또는 추천 제거)
-	$("#rec_update").click(function(){
-		$.ajax({
-			url: "/board/like",
-            type: "POST",
-            data: {
-                no: ${b.b_title},
-                id: '${sessionScope.loginId}'
-            },
-            success: function () {
-		        recCount();
-            },
-		})
-	})
+function likeCheck(){ 
+    const checkResult = document.getElementById('like_count')
+	let img = document.getElementById('like_update')
+    $.ajax({
+           type : "POST",  
+           url : "/board/likeCheck",       
+           dataType : "json",   
+           data : {'m_id' : $(sessionScope.loginId).val ,'b_number' : b.b_number},
+           error : function(){
+              alert("에러");
+           },
+           success : function(result) {
+               
+                   if(result == 0){
+                   checkResult.innerHTML = '1';
+				img.src = "\resources\img\좋아요후.png"
+                   	
+                   }
+                   else {
+                    checkResult.innerHTML = '0';
+                    
+                   
+               
+           }
+        }
+	});
 	
-	// 게시글 추천수
-    function recCount() {
-		$.ajax({
-			url: "/board/likeCount",
-            type: "POST",
-            data: {
-                no: ${b.b_title}
-            },
-            success: function (count) {
-            	$(".rec_count").html(count);
-            },
-		})
-    };
-    recCount(); // 처음 시작했을 때 실행되도록 해당 함수 호출
-    
-</script>
-<body>
+		
+
+
+
+
+
+
+
+
+
+
+</script><body>
 	 <jsp:include page="../header.jsp"></jsp:include>
 
 	<div class="container text-center" style="margin-top: 100px;">
@@ -71,13 +75,20 @@ $(function(){
 				<td>
 				<c:if test="${sessionScope.loginId == null}">
 					추천 기능은 <a href="/member/login" type="button" id="newLogin" class="btn btn-outline-success">로그인</a> 후 사용 가능합니다.<br />
-					<img src="\resources\img\좋아요전.png" id='rec_update' width="60px" height="60px" id="img1" class="rounded-circle">
-				<span class="rec_count"></span>
+					<img src="\resources\img\좋아요전.png" id='like_update' width="60px" height="60px" id="img1" class="rounded-circle">
+				<span id="rec_count"></span>
 							
 				</c:if>
 				<c:if test="${sessionScope.loginId != null}">
-				<img src="\resources\img\좋아요전.png" id='rec_update' width="60px" height="60px" id="img1" class="rounded-circle">
-				&nbsp;<span class="rec_count"></span>
+				
+				
+				
+				
+				<img src="\resources\img\좋아요전.png" id='like_update' onclick="likeCheck()"
+				
+				width="60px" height="60px" id="img1" class="rounded-circle">
+				
+				&nbsp;<span id="like_count"></span>
 				</c:if>
 		</td>
 		

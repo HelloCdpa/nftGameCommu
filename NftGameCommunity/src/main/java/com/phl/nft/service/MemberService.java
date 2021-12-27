@@ -22,5 +22,6 @@ public interface MemberService {
 	void memberUpdate(MemberDTO member) throws IllegalStateException, IOException;
 	List<PointDTO> pointView(String m_id);
 	MemberDTO pointAll(String m_id);
+	void pointCharge(String m_id, int m_point);
 	
 }

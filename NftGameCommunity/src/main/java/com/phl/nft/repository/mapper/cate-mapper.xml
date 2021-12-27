@@ -12,11 +12,4 @@
  	select * from category_table where cate_number=#{cate_number}
  	</select>
  	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
  	</mapper>
