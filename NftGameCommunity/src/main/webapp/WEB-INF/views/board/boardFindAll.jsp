@@ -63,7 +63,7 @@
 				<td>${b.cate_number} 
 				</td>
 
-				<td><a class="link-success" href="/board/boardDetail?b_number=${b.b_number}" type="submit">
+				<td><a class="link-success" href="/board/boardDetail?b_number=${b.b_number}&m_id=${sessionScope.loginId}" type="submit">
 				
 				
 				

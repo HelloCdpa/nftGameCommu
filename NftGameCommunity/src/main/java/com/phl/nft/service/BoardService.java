@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.phl.nft.dto.BoardDTO;
 import com.phl.nft.dto.CateDTO;
+import com.phl.nft.dto.LikeDTO;
 import com.phl.nft.dto.PageDTO;
 
 public interface BoardService {
@@ -21,5 +22,7 @@ public interface BoardService {
 	public CateDTO cateName(int cate_number);
 	List<BoardDTO> catePagingList(int page, int cate_number);
 	PageDTO catePaging(int page, int cate_number);
+	LikeDTO findLike(long b_number, String m_id);
+	int insertLike(LikeDTO like);
 
 }

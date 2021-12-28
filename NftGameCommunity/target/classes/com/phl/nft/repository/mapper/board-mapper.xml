@@ -90,13 +90,36 @@
 		board_table where cate_number = #{cate_number}
 	</select>
 
+<select id="findLike" parameterType="java.util.HashMap" resultType="like">
+	select * from like_table where b_number=#{b_number} and m_id=#{m_id}
+</select>
+
+<select id="memberFindLike" parameterType="like" resultType="like">
+	select * from like_table where b_number=#{b_number} and m_id=#{m_id}
+</select>
 
 
+<insert id="insertLike" parameterType="like">
+	insert into like_table(b_number, m_id, like_check)
+		values(#{b_number}, #{m_id}, 1)
+</insert>
 
 
+<delete id="deleteLike" parameterType="like">
+	delete from like_table where b_number=#{b_number} and m_id=#{m_id}
+</delete>
 
+<update id="plusLike" parameterType="like">
+		update board_table set
+		like_count = like_count+1
+		where b_number=#{b_number}
+	</update>
 
-
+<update id="minusLike" parameterType="like">
+		update board_table set
+		like_count = like_count-1
+		where b_number=#{b_number}
+	</update>
 
 
 

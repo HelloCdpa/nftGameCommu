@@ -32,6 +32,11 @@
  	
  	</update>
  	
+ 	<update id="nftBuy" parameterType="java.util.HashMap">
+ 	
+ 	update nft_table set m_id = #{m_id} where nft_number = #{nft_number} 
+ 	
+ 	</update>
  	
  	
  	

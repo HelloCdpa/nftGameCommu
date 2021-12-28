@@ -74,6 +74,21 @@
 	where m_id = #{m_id}
 	</update>
  	
+ 	<select id="pointCheck" parameterType="java.util.HashMap"
+		resultType="String">
+		select * from member_table where m_id = #{m_id} and m_point >= #{nft_price}
+	</select>
+ 	
+ 	<update id="memberPointBuy" parameterType="java.util.HashMap">
+		update member_table set m_point = m_point - #{nft_price}
+	where m_id = #{m_id}
+	</update>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
  	
  	</mapper>
  	

@@ -7,14 +7,18 @@ import com.phl.nft.dto.NftDTO;
 
 public interface NftService {
 
-	int nftSave(NftDTO nft) throws IllegalStateException, IOException;
+	public int nftSave(NftDTO nft) throws IllegalStateException, IOException;
 
-	List<NftDTO> nftFindAll(NftDTO nft);
+	public List<NftDTO> nftFindAll(NftDTO nft);
 
-	NftDTO nftDetail(long nft_number);
+	public NftDTO nftDetail(long nft_number);
 
-	void nftDelete(long nft_number);
+	public void nftDelete(long nft_number);
 
-	void nftUpdate(NftDTO nft);
+	public void nftUpdate(NftDTO nft);
+
+	public String nftBuyCheck(long nft_price, String m_id);
+
+	void nftBuy(long nft_number, long nft_price, String m_id);
 
 }

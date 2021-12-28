@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.phl.nft.dto.BoardDTO;
 import com.phl.nft.dto.CateDTO;
+import com.phl.nft.dto.LikeDTO;
 import com.phl.nft.dto.PageDTO;
 import com.phl.nft.service.BoardServiceImpl;
 
@@ -99,12 +100,22 @@ public class BoardController {
 	
 	
 	@RequestMapping(value = "boardDetail", method = RequestMethod.GET)
-	public String boardDetail(@RequestParam ("b_number") long b_number, Model model) {
+	public String boardDetail(@RequestParam ("b_number") long b_number,@RequestParam ("m_id") String m_id, Model model) {
 		
 		BoardDTO board =  bs.boardDetail(b_number);
+		LikeDTO like = bs.findLike(b_number, m_id);
 		model.addAttribute("b",board);
+		model.addAttribute("like",like);
+		
+		
 		
 		return "/board/boardDetail";
+	}
+	@RequestMapping(value="like",method=RequestMethod.POST)
+	public @ResponseBody int like(@ModelAttribute LikeDTO like) {
+		int result = bs.insertLike(like);
+		
+		return result;
 	}
 	
 	@RequestMapping(value = "cateSave", method = RequestMethod.GET)
@@ -144,9 +155,6 @@ public class BoardController {
 	
 	return "/board/cateBoard";
 	}
-	
-	
-	
 	
 	
 	

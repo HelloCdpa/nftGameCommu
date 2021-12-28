@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.phl.nft.dto.BoardDTO;
 import com.phl.nft.dto.CateDTO;
+import com.phl.nft.dto.LikeDTO;
 
 
 @Repository
@@ -102,8 +103,35 @@ public class BoardRepository {
 	public int cateBoardCount(int cate_number) {
 		return sql.selectOne("Board.cateBoardCount",cate_number);
 	}
-	
-	
+
+
+	public LikeDTO findLike(long b_number, String m_id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("b_number", b_number);
+		 map.put("m_id", m_id);
+		return sql.selectOne("Board.findLike",map);
+	}
+
+	public LikeDTO memberFindLike(LikeDTO like) {
+		return sql.selectOne("Board.memberFindLike",like);
+	}
+
+	public int insertLike(LikeDTO like) {
+		return sql.insert("Board.insertLike", like);
+	}
+
+	public void deleteLike(LikeDTO like) {
+		sql.delete("Board.deleteLike",like);
+	}
+
+	public void plusLike(LikeDTO like) {
+		sql.update("Board.plusLike", like);
+	}
+
+	public void minusLike(LikeDTO like) {
+		sql.update("Board.minusLike", like);
+		
+	}
 	
 	
 	

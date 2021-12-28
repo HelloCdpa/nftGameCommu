@@ -14,35 +14,6 @@
 <title>Insert title here</title>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script>
-function likeCheck(){ 
-    const checkResult = document.getElementById('like_count')
-	let img = document.getElementById('like_update')
-    $.ajax({
-           type : "POST",  
-           url : "/board/likeCheck",       
-           dataType : "json",   
-           data : {'m_id' : $(sessionScope.loginId).val ,'b_number' : b.b_number},
-           error : function(){
-              alert("에러");
-           },
-           success : function(result) {
-               
-                   if(result == 0){
-                   checkResult.innerHTML = '1';
-				img.src = "\resources\img\좋아요후.png"
-                   	
-                   }
-                   else {
-                    checkResult.innerHTML = '0';
-                    
-                   
-               
-           }
-        }
-	});
-	
-		
 
 
 
@@ -52,8 +23,7 @@ function likeCheck(){
 
 
 
-
-</script><body>
+<body>
 	 <jsp:include page="../header.jsp"></jsp:include>
 
 	<div class="container text-center" style="margin-top: 100px;">
@@ -72,26 +42,25 @@ function likeCheck(){
 					height="300"> <br> ${b.b_contents} <br></td>
 			</tr>
 			<tr>
-				<td>
-				<c:if test="${sessionScope.loginId == null}">
-					추천 기능은 <a href="/member/login" type="button" id="newLogin" class="btn btn-outline-success">로그인</a> 후 사용 가능합니다.<br />
-					<img src="\resources\img\좋아요전.png" id='like_update' width="60px" height="60px" id="img1" class="rounded-circle">
-				<span id="rec_count"></span>
-							
-				</c:if>
-				<c:if test="${sessionScope.loginId != null}">
-				
-				
-				
-				
-				<img src="\resources\img\좋아요전.png" id='like_update' onclick="likeCheck()"
-				
-				width="60px" height="60px" id="img1" class="rounded-circle">
-				
-				&nbsp;<span id="like_count"></span>
-				</c:if>
-		</td>
-		
+				<td><c:if test="${sessionScope.loginId == null}">
+					추천 기능은 <a href="/member/login" type="button" id="newLogin"
+							class="btn btn-outline-success">로그인</a> 후 사용 가능합니다.<br />
+						<img src="/resources/img/좋아요전.png" id="likeimg" width="60px"
+							height="60px" class="rounded-circle">
+						<span id="rec_count"></span>
+
+					</c:if> <c:if test="${sessionScope.loginId != null}">
+
+
+
+						<div>
+						<input type="hidden" id="like_check" value="${like.like_check}">
+								<img class="rounded-circle likeimg"id="likeimg" src="/resources/img/좋아요전.png" width="60px"
+							height="60px" > <span id="like_count">${b.like_count}</span>
+						
+						</div>
+					</c:if></td>
+
 
 			</tr>
 		</table>
@@ -127,6 +96,53 @@ function likeCheck(){
 	</div>
 
 </body>
+<script>
+	
+        
+    $(document).ready(function () {
+        var like_count = document.getElementById('like_count')
+        var likeval = document.getElementById('like_check').value
+        const b_number = '${b.b_number}';
+        const m_id = "${sessionScope.loginId}";
+        console.log(m_id);
+        console.log(likeval);
+        const likeimg = document.getElementById("likeimg")
+			
+        if(likeval>0) {
+        	likeimg.src = "/resources/img/좋아요후.png";
+           
+        }
+        else {
+        	likeimg.src = "/resources/img/좋아요전.png";
+            
+        }
+
+				// 좋아요 버튼을 클릭 시 실행되는 코드
+        $(".likeimg").on("click", function () {
+	            $.ajax({
+	                url :'/board/like',
+	                type :'POST',
+	                data : {'b_number':b_number, 'm_id':m_id},
+	                success : function(data){
+	                    if(data==1) {
+	                    	$("#likeimg").attr("src", "/resources/img/좋아요후.png");
+
+	                    } else {
+	                    	$("#likeimg").attr("src", "/resources/img/좋아요전.png");
+	                    }
+	                },error : function(){
+	                    	$("#likeimg").attr("src", "/resources/img/좋아요후.png");
+	            		console.log('오타 찾으세요')
+	            	}
+							});
+        });
+    });
+</script>
+
+
+
+
+
 <script>
 
 	$("#comment-write-btn").click(function(){
@@ -176,26 +192,6 @@ function likeCheck(){
 	});
 		
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
 
 
 </script>

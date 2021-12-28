@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.phl.nft.dto.MemberDTO;
 import com.phl.nft.dto.NftDTO;
 import com.phl.nft.service.NftServiceImpl;
 
@@ -70,8 +72,38 @@ public class NftController {
 		return "redirect:/nft/market";
 	}
 	
+	@RequestMapping(value = "nftBuyCheck", method = RequestMethod.POST)
+	public @ResponseBody String nftBuyCheck(Model model,@RequestParam long nft_number,@RequestParam long nft_price, @RequestParam String m_id) {
+		String result = ns.nftBuyCheck(nft_price,m_id);
+		return result;	
+		}
+		
+	
+	
+	@RequestMapping(value = "nftBuy", method = RequestMethod.GET)
+	public String nftBuy(Model model,@RequestParam long nft_number,@RequestParam long nft_price, @RequestParam String m_id) {
+		
+		//멤버포인트 사용 체크, 포인트 이력 업데이트 , 엔에프티에 mid 저장
+		ns.nftBuy(nft_number,nft_price,m_id);
+		return "redirect:/nft/mynft?m_id="+m_id;
+			
+			
+		}
+		
+	@RequestMapping(value = "mynft", method = RequestMethod.GET)
+	public String mynftForm(@RequestParam String m_id) {
+		
+	
+		return "/nft/market";
+	}
 	
 	
 	
-}
+	
+		
+		
+	}
+	
+	
+
 

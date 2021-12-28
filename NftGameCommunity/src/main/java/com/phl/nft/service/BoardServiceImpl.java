@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.phl.nft.dto.BoardDTO;
 import com.phl.nft.dto.CateDTO;
+import com.phl.nft.dto.LikeDTO;
 import com.phl.nft.dto.PageDTO;
 import com.phl.nft.repository.BoardRepository;
 
@@ -188,9 +189,48 @@ public class BoardServiceImpl implements BoardService {
 		return paging;
 	}
 	
+
+@Override
+	public LikeDTO findLike(long b_number, String m_id) {
+		return br.findLike(b_number,m_id);
+	}
+
+
+
+@Override
+public int insertLike(LikeDTO like) {
+	int result = 0;
+	// 좋아요가 이미 있는지 확인하는 코드
+	LikeDTO find = br.memberFindLike(like);
+	
+	// find가 null이면 좋아요가 없는 상태이므로 정보 저장
+	// find가 null이 아니면 좋아요가 있는 상태이므로 정보 삭제
+	if(find==null) {
+		result = br.insertLike(like);
+		br.plusLike(like);
+	} else {
+		br.deleteLike(like);
+		br.minusLike(like);
+		
+	}
+	return result;
+	
+
+}
 	
 	
 	
+
+
+
+
+
+
+
+
+
+
+
 	
 	
 	
