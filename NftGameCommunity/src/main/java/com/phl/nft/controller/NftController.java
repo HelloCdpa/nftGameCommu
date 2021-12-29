@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.phl.nft.dto.MemberDTO;
 import com.phl.nft.dto.NftDTO;
 import com.phl.nft.service.NftServiceImpl;
 
@@ -91,10 +90,10 @@ public class NftController {
 		}
 		
 	@RequestMapping(value = "mynft", method = RequestMethod.GET)
-	public String mynftForm(@RequestParam String m_id) {
-		
-	
-		return "/nft/market";
+	public String mynftForm(@RequestParam String m_id,Model model) {
+		List <NftDTO> nList = ns.mynft(m_id);
+		model.addAttribute("nList",nList);
+		return "/nft/mynft";
 	}
 	
 	

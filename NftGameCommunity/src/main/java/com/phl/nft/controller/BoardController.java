@@ -17,15 +17,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.phl.nft.dto.BoardDTO;
 import com.phl.nft.dto.CateDTO;
 import com.phl.nft.dto.LikeDTO;
+import com.phl.nft.dto.MemberDTO;
 import com.phl.nft.dto.PageDTO;
 import com.phl.nft.service.BoardServiceImpl;
+import com.phl.nft.service.MemberServiceImpl;
 
 @Controller
 @RequestMapping(value="/board/*")
 public class BoardController {
 	@Autowired
 	private BoardServiceImpl bs;
-
+	@Autowired
+	private MemberServiceImpl ms;
 	
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public String save(@ModelAttribute BoardDTO board) throws IllegalStateException, IOException{
@@ -104,6 +107,9 @@ public class BoardController {
 		
 		BoardDTO board =  bs.boardDetail(b_number);
 		LikeDTO like = bs.findLike(b_number, m_id);
+		MemberDTO member = ms.mypage(board.getM_id());
+		
+		model.addAttribute("m",member);
 		model.addAttribute("b",board);
 		model.addAttribute("like",like);
 		

@@ -14,6 +14,7 @@ public class NftDTO {
 	private String nft_filename, nft_name, nft_intro ;
 	private Timestamp nft_date;
 	private String m_id;
+	private boolean nft_sell;
 	
 	
 }

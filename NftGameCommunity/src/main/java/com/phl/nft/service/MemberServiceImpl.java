@@ -119,7 +119,7 @@ public class MemberServiceImpl implements MemberService{
 		String m_profilename = m_profile.getOriginalFilename();
 		m_profilename = System.currentTimeMillis() + "-" + m_profilename;
 		System.out.println("m_profilename: " + m_profilename);
-		String savePath = "D:\\development_Phl\\source\\spring\\MemberBoardProject\\src\\main\\webapp\\resources\\profile_upload\\"+m_profilename;
+		String savePath = "D:\\development_Phl\\source\\spring\\MemberBoardProject\\src\\main\\webapp\\resources\\nft\\"+m_profilename;
 		if(!m_profile.isEmpty()) {
 			m_profile.transferTo(new File(savePath));
 		}
@@ -142,6 +142,10 @@ public class MemberServiceImpl implements MemberService{
 
 		mr.pointCharge(m_id,m_point);
 		mr.memberPointCharge(m_id,m_point,"포인트 충전");
+	}
+	@Override
+	public void nftprofile(MemberDTO member) {
+		mr.nftprofile(member);
 	}
 	
 	

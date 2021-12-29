@@ -84,7 +84,10 @@
 	where m_id = #{m_id}
 	</update>
  	
- 	
+ 	<update id="nftprofile"  parameterType="member">
+	update member_table set m_profilename = #{m_profilename}
+	where m_id = #{m_id}
+	</update>
  	
  	
  	

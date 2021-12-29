@@ -58,13 +58,17 @@ public class NftRepository {
 		
 	}
 
-	public void pointBuyView(long nft_price, String m_id, String type) {
+	public void pointBuyView(long p_point, String m_id, String p_type) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		 map.put("type", type);
+		 map.put("p_point", p_point);
+		 map.put("p_type", p_type);
 		 map.put("m_id", m_id);
-		 map.put("nft_price", nft_price);
 		 sql.selectOne("point.pointSave",map);	
 		
+	}
+
+	public List<NftDTO> mynft(String m_id) {
+		return sql.selectList("nft.mynft",m_id);
 	}
 
 

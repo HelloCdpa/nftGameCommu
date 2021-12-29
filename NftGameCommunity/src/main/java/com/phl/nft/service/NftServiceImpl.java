@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -72,6 +71,10 @@ public class NftServiceImpl implements NftService {
 		 nr.nftBuy(nft_number,m_id);
 		 nr.memberPointBuy(nft_price,m_id);
 		 nr.pointBuyView(nft_price,m_id,"포인트 차감");
+	}
+	@Override
+	public List<NftDTO> mynft(String m_id) {
+		return nr.mynft(m_id);
 	}
 
 	

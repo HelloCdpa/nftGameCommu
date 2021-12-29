@@ -154,7 +154,11 @@ public class MemberController {
 		return "redirect:/member/pointView?m_id="+m_id;
 	}
 	
-	
+	@RequestMapping(value = "nftprofile", method = RequestMethod.GET)
+	public String nftprofile(@ModelAttribute MemberDTO member){
+		ms.nftprofile(member);
+		return "index";
+	}
 	
 
 }

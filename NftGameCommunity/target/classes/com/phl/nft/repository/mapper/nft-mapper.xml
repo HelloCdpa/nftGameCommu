@@ -10,13 +10,13 @@
  	
  	<select id="nftFindAll" resultType="nft">
  	
- 		select * from nft_table
+ 		select * from nft_table where nft_sell = false
  	
  	</select>
  	
  	<select id="nftDetail" parameterType="long" resultType="nft">
  	
- 		select * from nft_table where nft_number = #{nft_number}
+ 		select * from nft_table where nft_number = #{nft_number} 
  	
  	</select>
  	
@@ -34,11 +34,15 @@
  	
  	<update id="nftBuy" parameterType="java.util.HashMap">
  	
- 	update nft_table set m_id = #{m_id} where nft_number = #{nft_number} 
+ 	update nft_table set m_id = #{m_id}, nft_sell = true where nft_number = #{nft_number} 
  	
  	</update>
  	
+ 	<select id="mynft" parameterType="String" resultType="nft">
  	
+ 		select * from nft_table where m_id = #{m_id}
+ 	
+ 	</select>
  	
  	
  	

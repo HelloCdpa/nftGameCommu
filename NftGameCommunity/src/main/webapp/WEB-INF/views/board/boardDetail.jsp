@@ -29,17 +29,24 @@
 	<div class="container text-center" style="margin-top: 100px;">
 		<table
 			class="table bg-success p-2 text-dark bg-opacity-10 bg-gradient">
-			<tr
-				class="border border-secondary border-2 bg-success p-2 bg-opacity-50">
+			 <thead>
+			<tr >
 				<td>${b.b_title}</td>
 			</tr>
-			<tr class="border border-secondary">
-				<td>작성자 : ${b.m_id} 조회 ${b.b_hits} | 추천 ${b.like_count} 작성시간 ${b.b_date}</td>
+			</thead>
+			<tbody>
+			<tr>
+			
+				<td scope="col"><img alt=""
+					src="/resources/nft/${m.m_profilename}" width="150"
+					height="150"></td>
+				
+				<td scope="col">작성자 : ${b.m_id} <br> 조회 ${b.b_hits} | 추천 ${b.like_count} <br> 작성시간 ${b.b_date}</td>
 			</tr>
-			<tr class="border border-secondary">
+			<tr>
 				<td><img alt="사진이 없어요"
 					src="/resources/board_uploadfile/${b.b_filename}" width="300"
-					height="300"> <br> ${b.b_contents} <br></td>
+					height="300"></td> <td align = "left" width="30%"> ${b.b_contents} </td> 
 			</tr>
 			<tr>
 				<td><c:if test="${sessionScope.loginId == null}">
@@ -63,6 +70,7 @@
 
 
 			</tr>
+			</tbody>
 		</table>
 
 		<div id="comment-write">
@@ -134,7 +142,9 @@
 	                    	$("#likeimg").attr("src", "/resources/img/좋아요후.png");
 	            		console.log('오타 찾으세요')
 	            	}
+	                
 							});
+	            location.reload();
         });
     });
 </script>

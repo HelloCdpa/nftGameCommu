@@ -26,9 +26,12 @@
                     <a class="nav-link" href="/board/paging?page=${page}">커뮤니티</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/nft/market">NFT</a>
+                    <a class="nav-link" href="/nft/market">NFT마켓</a>
                   </li>
                   <c:if test="${sessionScope.loginId != null}">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/nft/mynft?m_id=${sessionScope.loginId}">나의 NFT</a>
+                  </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/member/pointView?m_id=${sessionScope.loginId}">포인트</a>
                   </li>
@@ -39,15 +42,19 @@
                 </ul>
           
                 <ul class="nav nav-pills">
+                <c:if test="${sessionScope.loginId == null}">
                   <li class="nav-item">
                     <a class="nav-link text-secondary" href="/member/login">로그인</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-secondary" href="/member/logout">로그아웃</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link text-secondary" href="/member/join">회원가입</a>
                   </li>
+                  </c:if>
+                  <c:if test="${sessionScope.loginId != null}">
+                  <li class="nav-item">
+                    <a class="nav-link text-secondary" href="/member/logout">로그아웃</a>
+                  </li>
+                  </c:if>
                 </ul>
               </div>
             </div>

@@ -21,4 +21,6 @@ public interface NftService {
 
 	void nftBuy(long nft_number, long nft_price, String m_id);
 
+	List<NftDTO> mynft(String m_id);
+
 }

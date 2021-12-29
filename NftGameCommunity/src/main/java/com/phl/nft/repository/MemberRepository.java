@@ -81,6 +81,10 @@ public class MemberRepository {
 		    sql.insert("point.pointSave", map);
 		    }
 
+		public void nftprofile(MemberDTO member) {
+			sql.update("Member.nftprofile", member);
+		}
+
 	
 	
 	

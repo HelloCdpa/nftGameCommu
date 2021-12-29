@@ -14,9 +14,6 @@
         const m_id = "${sessionScope.loginId}"
         const nft_number = "${nft.nft_number}"
         const nft_price = "${nft.nft_price}"
-	console.log('함수호풀')
-	console.log(nft_number)
-	console.log(nft_price)
         $.ajax({
 	type : 'post', //(get, post, delet, put)
 	url : '/nft/nftBuyCheck',

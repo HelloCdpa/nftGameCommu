@@ -63,9 +63,8 @@
 			<tr>
 				<td>프로필사진</td>
 				<td><img class="mt-3" alt=""
-					src="/resources/profile_upload/${m.m_profilename}" width="150"
+					src="/resources/nft/${m.m_profilename}" width="150"
 					height="150"><br> 
-					<input type="file" name="m_profile" id="m_profile" class="btn mt-4"></td>
 			</tr>
 
 			<tr>
