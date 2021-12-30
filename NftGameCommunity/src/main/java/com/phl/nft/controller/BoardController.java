@@ -30,8 +30,15 @@ public class BoardController {
 	@Autowired
 	private MemberServiceImpl ms;
 	
+	@RequestMapping(value = "save", method = RequestMethod.GET)
+	public String saveForm(Model model) {
+		List<CateDTO> cList = bs.cateFindAll();
+		model.addAttribute("cList",cList);
+		return "/board/save";
+	}
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public String save(@ModelAttribute BoardDTO board) throws IllegalStateException, IOException{
+	public String save(@ModelAttribute BoardDTO board, Model model) throws IllegalStateException, IOException{
+		
 		bs.boardSave(board);
 		return "redirect:/board/paging";
 	}

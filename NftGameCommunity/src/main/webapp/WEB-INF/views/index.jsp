@@ -34,6 +34,11 @@
   </div>
   <!-- Call to Action-->
   <div class="card text-white my-5 py-4 text-center bg-gradient border-success">
+   <c:if test="${sessionScope.loginId == null}">
+  <div class="card-body">
+  <p class="text-dark"> 당장 회원가입해</p>
+  </div>
+   </c:if>
       <div class="card-body"><p class="text-white m-0">
        <c:if test="${sessionScope.loginId eq 'admin'}">
             <a class="btn btn-outline-success" href="/member/paging"> 관리자 페이지 이동 </a>

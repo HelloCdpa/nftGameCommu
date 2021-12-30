@@ -132,6 +132,10 @@ public class BoardRepository {
 		sql.update("Board.minusLike", like);
 		
 	}
+
+	public List<CateDTO> cateFindAll() {
+		return sql.selectList("cate.cateFindAll");
+	}
 	
 	
 	

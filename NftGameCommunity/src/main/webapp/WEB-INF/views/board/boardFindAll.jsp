@@ -8,6 +8,11 @@
 	<link href="/resources/css/test.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function Login() {
+	alert('로그인이 필요합니다')
+}
+</script>
 </head>
 <body>
     <jsp:include page="../header.jsp"></jsp:include>
@@ -39,9 +44,13 @@
 </div>
 
 <div class="col-auto">
+ <c:if test="${sessionScope.loginId != null}">
 <a class="btn btn-outline-success" href="/board/save">게시글 작성</a>
+</c:if>
+<c:if test="${sessionScope.loginId == null}">
+<a class="btn btn-outline-success" onclick="Login()" href="/member/login">게시글 작성</a>
+</c:if>
 </div>
-
 
 </form>
 	
@@ -63,11 +72,17 @@
 				<td>${b.cate_number} 
 				</td>
 
-				<td><a class="link-success" href="/board/boardDetail?b_number=${b.b_number}&m_id=${sessionScope.loginId}" type="submit">
-				
-				
-				
+				<td>
+				<c:if test="${sessionScope.loginId != null}">	
+				<a class="link-success" href="/board/boardDetail?b_number=${b.b_number}&m_id=${sessionScope.loginId}" type="submit">
 				${b.b_title}</a>
+				</c:if>
+				
+				<c:if test="${sessionScope.loginId == null}">	
+				<a class="link-success" href="/board/boardDetail?b_number=${b.b_number}&m_id='guest'" type="submit">
+				${b.b_title}</a>
+				</c:if>
+				
 						<c:if test="${b.b_date>=nowday}">
 						<img class="upload"
 							src="<c:url value='/resources/img/new.png'/>"

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +35,13 @@
 	
 });
 }
+
+
+
+ function Login() {
+	alert('로그인이 필요합니다')
+	location.href='/member/login';
+}
 </script>
 
 
@@ -61,7 +69,16 @@
         <input type="hidden" id="nft_price" name="nft_price" value="${nft.nft_price}" >
         <input type="hidden" id="m_id" name="m_id" value="${sessionScope.loginId}" >
         
-        가격 : ${nft.nft_price} point <input class="btn btn-outline-success btn-sm" onclick="NftBuy()" value="구매">
+        가격 : ${nft.nft_price} point 
+        
+        
+        <c:if test="${sessionScope.loginId != null}">
+        <input class="btn btn-outline-success btn-sm" onclick="NftBuy()" value="구매">
+        </c:if>
+        
+        <c:if test="${sessionScope.loginId == null}">
+        <input class="btn btn-outline-success btn-sm" onclick="Login()" value="구매">
+        </c:if>
         </form>
         </div>
       </div>

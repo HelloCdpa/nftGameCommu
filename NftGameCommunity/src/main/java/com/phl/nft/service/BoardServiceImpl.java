@@ -217,6 +217,14 @@ public int insertLike(LikeDTO like) {
 	
 
 }
+
+
+
+
+@Override
+public List<CateDTO> cateFindAll() {
+	return br.cateFindAll();
+}
 	
 	
 	

@@ -14,12 +14,13 @@
 <title>Insert title here</title>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
-
-
-
-
-
+<style>
+  #table {
+    width: 900px;
+    box-sizing: content-box;
+  }
+ 
+</style>
 
 
 
@@ -27,43 +28,40 @@
 	 <jsp:include page="../header.jsp"></jsp:include>
 
 	<div class="container text-center" style="margin-top: 100px;">
-		<table
-			class="table bg-success p-2 text-dark bg-opacity-10 bg-gradient">
+		<table id="table"
+			class="table bg-success p-2 text-dark bg-opacity-10 bg-gradient text-center">
 			 <thead>
 			<tr >
-				<td>${b.b_title}</td>
+				<td colspan="2">${b.b_title}</td>
 			</tr>
 			</thead>
 			<tbody>
 			<tr>
 			
-				<td scope="col"><img alt=""
+				<td align="left"  id="td" style="width:50%;"><img alt=""
 					src="/resources/nft/${m.m_profilename}" width="150"
 					height="150"></td>
 				
-				<td scope="col">작성자 : ${b.m_id} <br> 조회 ${b.b_hits} | 추천 ${b.like_count} <br> 작성시간 ${b.b_date}</td>
+				<td align="left" width="150">작성자 : ${b.m_id} <br> 조회 ${b.b_hits} | 추천 ${b.like_count} <br> 작성시간 ${b.b_date}</td>
 			</tr>
 			<tr>
-				<td><img alt="사진이 없어요"
+				<td colspan="2"><img alt="사진이 없어요"
 					src="/resources/board_uploadfile/${b.b_filename}" width="300"
-					height="300"></td> <td align = "left" width="30%"> ${b.b_contents} </td> 
+					height="300"><br> ${b.b_contents} </td> 
 			</tr>
 			<tr>
-				<td><c:if test="${sessionScope.loginId == null}">
+				<td colspan="2"><c:if test="${sessionScope.loginId == null || sessionScope.loginId eq 'guest'}">
 					추천 기능은 <a href="/member/login" type="button" id="newLogin"
-							class="btn btn-outline-success">로그인</a> 후 사용 가능합니다.<br />
+							class="btn btn-outline-success">로그인</a> 후 사용 가능합니다.<br>
 						<img src="/resources/img/좋아요전.png" id="likeimg" width="60px"
-							height="60px" class="rounded-circle">
-						<span id="rec_count"></span>
+							height="60px" class="rounded-circle mt-2">
+						 ${b.like_count}
 
 					</c:if> <c:if test="${sessionScope.loginId != null}">
-
-
-
 						<div>
 						<input type="hidden" id="like_check" value="${like.like_check}">
 								<img class="rounded-circle likeimg"id="likeimg" src="/resources/img/좋아요전.png" width="60px"
-							height="60px" > <span id="like_count">${b.like_count}</span>
+							height="60px" > ${b.like_count}
 						
 						</div>
 					</c:if></td>
@@ -72,13 +70,14 @@
 			</tr>
 			</tbody>
 		</table>
-
+<c:if test="${sessionScope.loginId != null}">
 		<div id="comment-write">
 			<input type="text" id="m_id" value="${sessionScope.loginId}"
 				readonly="readonly"> <input type="text" id="c_contents"
 				placeholder="댓글내용">
 			<button id="comment-write-btn">댓글등록</button>
 		</div>
+		</c:if>
 	</div>
 	<!-- 댓글 목록 출력 -->
 	<div id="comment-list">
@@ -134,9 +133,11 @@
 	                success : function(data){
 	                    if(data==1) {
 	                    	$("#likeimg").attr("src", "/resources/img/좋아요후.png");
+	                    	 location.reload();
 
 	                    } else {
 	                    	$("#likeimg").attr("src", "/resources/img/좋아요전.png");
+	                    	 location.reload();
 	                    }
 	                },error : function(){
 	                    	$("#likeimg").attr("src", "/resources/img/좋아요후.png");
@@ -144,14 +145,10 @@
 	            	}
 	                
 							});
-	            location.reload();
+	           
         });
     });
 </script>
-
-
-
-
 
 <script>
 
@@ -173,8 +170,6 @@
 			dataType : 'json',
 			
 			success: function(result){
-				console.log(result);
-				console.log(result);
 			let output = "<table class='table'>";
 			output += "<tr><th>댓글번호</th>";
 			output += "<th>작성자</th>";

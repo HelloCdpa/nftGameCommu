@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +19,9 @@
  <label for="cate_number">카테고리</label>
   <select name="cate_number" id="cate_number" class="form-control">
     <option value="5">카테고리 선택</option>
-    <option value="1">사이버드래곤</option>  
-    <option value="2">조디움</option>  
-    <option value="3">솔칙스</option>  
-    <option value="4">나인크로니클</option>  
-    <option value="5">그냥 잡담</option>  
+ <c:forEach items="${cList}" var="c" >
+    <option value="${c.cate_number}">${c.cate_name}</option>
+    </c:forEach>
     </select><br>
  
  

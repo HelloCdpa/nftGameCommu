@@ -24,5 +24,6 @@ public interface BoardService {
 	PageDTO catePaging(int page, int cate_number);
 	LikeDTO findLike(long b_number, String m_id);
 	int insertLike(LikeDTO like);
+	List<CateDTO> cateFindAll();
 
 }

@@ -12,4 +12,8 @@
  	select * from category_table where cate_number=#{cate_number}
  	</select>
  	
+ 	<select id="cateFindAll" resultType="cate">
+ 	select * from category_table 
+ 	</select>
+ 	
  	</mapper>

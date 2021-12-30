@@ -17,11 +17,6 @@ public class HomeController {
 		return "/member/join";
 	}
 	
-	@RequestMapping(value = "/board/save", method = RequestMethod.GET)
-	public String saveForm() {
-		return "/board/save";
-	}
-	
 	
 	
 }

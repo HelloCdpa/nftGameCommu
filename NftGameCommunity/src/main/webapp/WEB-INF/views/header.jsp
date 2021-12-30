@@ -8,6 +8,8 @@
  <link href="/resources/css/test.css" rel="stylesheet">  
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
 </head>
 <body>
  <header class="fixed-top bg-gradient shadow bg-gradient"style="background-color: rgb(191, 224, 196);">
@@ -20,37 +22,36 @@
               <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="../">Home</a>
+                    <a class="nav-link active fw-bold" aria-current="page" href="../">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/board/paging?page=${page}">커뮤니티</a>
+                    <a class="nav-link text-dark" href="/board/paging?page=${page}">커뮤니티</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/nft/market">NFT마켓</a>
+                    <a class="nav-link text-dark" href="/nft/market">NFT마켓</a>
                   </li>
-                  <c:if test="${sessionScope.loginId != null}">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/nft/mynft?m_id=${sessionScope.loginId}">나의 NFT</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/member/pointView?m_id=${sessionScope.loginId}">포인트</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/member/pointCharge?m_id=${sessionScope.loginId}">포인트 충전</a>
-                  </li>
-                    </c:if>
+                 
                 </ul>
           
                 <ul class="nav nav-pills">
                 <c:if test="${sessionScope.loginId == null}">
                   <li class="nav-item">
-                    <a class="nav-link text-secondary" href="/member/login">로그인</a>
+                    <a class="nav-link text-dark" href="/member/login">로그인</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-secondary" href="/member/join">회원가입</a>
+                    <a class="nav-link text-dark" href="/member/join">회원가입</a>
                   </li>
                   </c:if>
                   <c:if test="${sessionScope.loginId != null}">
+                  <li class="nav-item">
+                    <a class="nav-link text-dark" href="/nft/mynft?m_id=${sessionScope.loginId}">나의 NFT</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-dark" href="/member/pointView?m_id=${sessionScope.loginId}">포인트</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-danger" href="/member/pointCharge?m_id=${sessionScope.loginId}">포인트 충전</a>
+                  </li>
                   <li class="nav-item">
                     <a class="nav-link text-secondary" href="/member/logout">로그아웃</a>
                   </li>
