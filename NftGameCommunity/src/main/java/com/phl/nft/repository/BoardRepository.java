@@ -136,6 +136,22 @@ public class BoardRepository {
 	public List<CateDTO> cateFindAll() {
 		return sql.selectList("cate.cateFindAll");
 	}
+
+	public List<BoardDTO> viewSort() {
+		return sql.selectList("Board.viewSort");
+	}
+
+	public List<BoardDTO> likeSort() {
+		return sql.selectList("Board.likeSort");
+	}
+
+	public List<BoardDTO> cateviewSort(int cate_number) {
+		return sql.selectList("Board.cateviewSort",cate_number);
+	}
+
+	public List<BoardDTO> catelikeSort(int cate_number) {
+		return sql.selectList("Board.cateviewSort",cate_number);
+	}
 	
 	
 	

@@ -121,10 +121,21 @@
 		where b_number=#{b_number}
 	</update>
 
+<select id="viewSort" resultType="board">
+	select * from board_table order by b_hits desc 
+</select>
 
+<select id="likeSort" resultType="board">
+	select * from board_table order by like_count desc 
+</select>
 
+<select id="cateviewSort" parameterType="int" resultType="board">
+	select * from board_table where cate_number = #{cate_number} order by b_hits desc 
+</select>
 
-
+<select id="catelikeSort" parameterType="int" resultType="board">
+	select * from board_table where cate_number = #{cate_number} order by like_count desc 
+</select>
 
 
 

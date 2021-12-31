@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style>
   #table {
-    width: 900px;
+    width: 1000px;
     box-sizing: content-box;
   }
  
@@ -27,22 +27,22 @@
 <body>
 	 <jsp:include page="../header.jsp"></jsp:include>
 
-	<div class="container text-center" style="margin-top: 100px;">
+	<div class="container text-center" style="margin-top: 100px; margin-left: 10%;">
 		<table id="table"
 			class="table bg-success p-2 text-dark bg-opacity-10 bg-gradient text-center">
 			 <thead>
 			<tr >
-				<td colspan="2">${b.b_title}</td>
+				<td colspan="2" style="height: 2cm;"><h2>${b.b_title}</h2></td>
 			</tr>
 			</thead>
 			<tbody>
 			<tr>
 			
-				<td align="left"  id="td" style="width:50%;"><img alt=""
+				<td width="150">작성자 : ${b.m_id} <br> 조회 ${b.b_hits} | 추천 ${b.like_count} <br> 작성시간 ${b.b_date}</td>
+				<td id="td" style="width:50%;"><img alt=""
 					src="/resources/nft/${m.m_profilename}" width="150"
 					height="150"></td>
 				
-				<td align="left" width="150">작성자 : ${b.m_id} <br> 조회 ${b.b_hits} | 추천 ${b.like_count} <br> 작성시간 ${b.b_date}</td>
 			</tr>
 			<tr>
 				<td colspan="2"><img alt="사진이 없어요"
@@ -51,11 +51,11 @@
 			</tr>
 			<tr>
 				<td colspan="2"><c:if test="${sessionScope.loginId == null || sessionScope.loginId eq 'guest'}">
-					추천 기능은 <a href="/member/login" type="button" id="newLogin"
-							class="btn btn-outline-success">로그인</a> 후 사용 가능합니다.<br>
 						<img src="/resources/img/좋아요전.png" id="likeimg" width="60px"
 							height="60px" class="rounded-circle mt-2">
-						 ${b.like_count}
+						 ${b.like_count} <br><br>
+					추천 기능은 <a href="/member/login" type="button" id="newLogin"
+							class="btn btn-outline-success">로그인</a> 후 사용 가능합니다.
 
 					</c:if> <c:if test="${sessionScope.loginId != null}">
 						<div>

@@ -43,17 +43,7 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	@Override
 	public List<BoardDTO> boardFindAll() {
@@ -224,6 +214,30 @@ public int insertLike(LikeDTO like) {
 @Override
 public List<CateDTO> cateFindAll() {
 	return br.cateFindAll();
+}
+
+
+@Override
+public List<BoardDTO> viewSort() {
+	return br.viewSort();
+}
+
+
+@Override
+public List<BoardDTO> likeSort() {
+	return br.likeSort();
+}
+
+
+@Override
+public List<BoardDTO> cateviewSort(int cate_number) {
+	return br.cateviewSort(cate_number);
+}
+
+
+@Override
+public List<BoardDTO> catelikeSort(int cate_number) {
+	return br.catelikeSort(cate_number);
 }
 	
 	

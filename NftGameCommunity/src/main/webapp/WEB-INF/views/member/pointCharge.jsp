@@ -98,7 +98,14 @@
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
 
-<div class="container" style="background-color: rgb(191, 224, 196); border-radius: 1rem; margin-top: 100px;">
+<div class="container" style="margin-top: 100px;">
+<h2>포인트 충전</h2>
+
+<img alt="" src="/resources/nft/pudgy.gif" width="300" height="300">
+<img alt="" src="/resources/nft/point.png" width="300" height="300">
+
+
+<div class="btn-group" >
 <form action="/member/pointCharge1" method="post" name="updatePoint1">
 <input type="hidden" name="m_id"  value="${sessionScope.loginId}"> 
 <input type="hidden" name="m_point" value="1000">
@@ -117,9 +124,8 @@
 <button class="btn btn-outline-danger" type="button" onclick="requestPay3()">10000p 충전</button>
 </form>
 
-
 </div>
-
+</div>
 
 
 

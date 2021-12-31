@@ -108,6 +108,42 @@ public class BoardController {
 		return "/board/boardFindAll";
 	}
 	
+	@RequestMapping(value="viewSort", method=RequestMethod.GET)
+	public String viewSort(Model model) {
+		List<BoardDTO> bList = bs.viewSort();
+		model.addAttribute("bList", bList);
+		
+		return "/board/boardFindAll";
+	}
+	
+	@RequestMapping(value="likeSort", method=RequestMethod.GET)
+	public String likeSort(Model model) {
+		List<BoardDTO> bList = bs.likeSort();
+		model.addAttribute("bList", bList);
+		
+		return "/board/boardFindAll";
+	}
+	
+	@RequestMapping(value="cateviewSort", method=RequestMethod.GET)
+	public String cateviewSort(@RequestParam int cate_number,Model model) {
+		List<BoardDTO> bList = bs.cateviewSort(cate_number);
+		model.addAttribute("bList", bList);
+		CateDTO cate = bs.cateName(cate_number);
+		model.addAttribute("c",cate);
+		return "/board/cateBoard";
+	}
+	
+	@RequestMapping(value="catelikeSort", method=RequestMethod.GET)
+	public String catelikeSort(@RequestParam int cate_number,Model model) {
+		List<BoardDTO> bList = bs.catelikeSort(cate_number);
+		model.addAttribute("bList", bList);
+		CateDTO cate = bs.cateName(cate_number);
+		model.addAttribute("c",cate);
+		return "/board/cateBoard";
+	}
+	
+	
+	
 	
 	@RequestMapping(value = "boardDetail", method = RequestMethod.GET)
 	public String boardDetail(@RequestParam ("b_number") long b_number,@RequestParam ("m_id") String m_id, Model model) {
@@ -142,8 +178,8 @@ public class BoardController {
 	@RequestMapping(value = "cateBoard", method = RequestMethod.GET)
 	public String cateBoardForm(@RequestParam int cate_number, Model model) {
 		List<BoardDTO> bList =  bs.findCate(cate_number);
-		CateDTO cate = bs.cateName(cate_number);
 		model.addAttribute("bList",bList);
+		CateDTO cate = bs.cateName(cate_number);
 		model.addAttribute("c",cate);
 		return "/board/catePaging";
 	}

@@ -25,5 +25,9 @@ public interface BoardService {
 	LikeDTO findLike(long b_number, String m_id);
 	int insertLike(LikeDTO like);
 	List<CateDTO> cateFindAll();
+	List<BoardDTO> viewSort();
+	List<BoardDTO> likeSort();
+	List<BoardDTO> cateviewSort(int cate_number);
+	List<BoardDTO> catelikeSort(int cate_number);
 
 }

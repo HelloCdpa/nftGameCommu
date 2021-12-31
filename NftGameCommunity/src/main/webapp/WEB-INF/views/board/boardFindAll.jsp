@@ -43,6 +43,8 @@ function Login() {
 <input class="form-control"  type="submit" value="검색">
 </div>
 
+
+
 <div class="col-auto">
  <c:if test="${sessionScope.loginId != null}">
 <a class="btn btn-outline-success" href="/board/save">게시글 작성</a>
@@ -57,20 +59,26 @@ function Login() {
 	<table class="table table-striped table-hover" style="margin-top: 30px;">
 		<tr>	
 			<th>글번호</th>
-			<th>카테고리</th>
 			<th>제목</th>
 			<th>작성자</th>
-			<th>파일</th>
-			<th>조회수</th>
-			<th></th>
-			<th></th>
+			<th>
+			
+		<form action="/board/viewSort" method="get">
+			<input class="btn btn-link-dark" type="submit" value="조회수">
+			</form>
+			</th>
+			<th>
+			<form action="/board/likeSort" method="get">
+			<input class="btn btn-link-dark" type="submit" value="추천수">
+			</form>
+			</th>
+			
 		</tr>
 		<c:forEach items="${bList}" var="b" varStatus="status">
 			<tr>
 				<td>${b.b_number}</td>
 
-				<td>${b.cate_number} 
-				</td>
+				
 
 				<td>
 				<c:if test="${sessionScope.loginId != null}">	
@@ -88,21 +96,21 @@ function Login() {
 							src="<c:url value='/resources/img/new.png'/>"
 							style="width: 28px; height: 22px;">
 							</c:if> 
-			
-				
-				
+
 				
 				</td>
 				<td>${b.m_id}</td>
-				<td>${b.b_filename}</td>	
 				<td>${b.b_hits}</td>	
+				<td>${b.like_count} &nbsp;&nbsp;
+				
+				
 				<c:if test="${sessionScope.loginId eq b.m_id}">		
-				<td><a class="link-success" href="/board/boardUpdate?b_number=${b.b_number}" type="submit">수정</a></td>
+				<a class="btn btn-outline-primary" href="/board/boardUpdate?b_number=${b.b_number}" type="submit">글수정</a>
 				</c:if>
 				<c:if test="${sessionScope.loginId eq b.m_id || sessionScope.loginId eq 'admin'}">		
-				<td><a class="link-success" href="/board/boardDelete?b_number=${b.b_number}" type="submit">삭제</a></td>
+				<a class="btn btn-outline-danger" href="/board/boardDelete?b_number=${b.b_number}" type="submit">글삭제</a>
 				</c:if>
-
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
