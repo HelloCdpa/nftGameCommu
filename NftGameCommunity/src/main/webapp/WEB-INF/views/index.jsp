@@ -145,9 +145,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           </div>
           <div class="card-footer text-center">
             발랄한 학생! 30000p
-            <a class="btn btn-outline-success btn-sm" href="/nft/market"
-              >구매</a
-            >
+            <a class="btn btn-outline-success btn-sm" href="/nft/market">구매</a>
           </div>
         </div>
       </div>
@@ -156,6 +154,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <footer class="py-5 bg-dark">
       <div class="container px-4 px-lg-5">
         <p class="m-0 text-center text-white">Copyright &copy; phl1021 2021</p>
+        <a class="text-white" href="/resources/nftcom.html" target="_blank">nft 기능 설명 ppt</a>
       </div>
     </footer>
   </body>
