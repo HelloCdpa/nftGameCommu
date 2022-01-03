@@ -18,9 +18,22 @@ input {
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
-	function idDuplicate() {
-		const id = document.getElementById('m_id').value;
-		const checkResult = document.getElementById('m_id-dup-check');
+	function idCheck() {
+		const id = document.getElementById('id').value;
+		const checkResult = document.getElementById('m_id-check');
+		const idLength = id.length;
+		console.log(idLength);
+		const exp = /^(?=.*[a-z])(?=.*\d)[a-z\d]{3,20}$/;
+		
+		if(idLength == 0){
+	    	checkResult.innerHTML = '필수항목입니다'
+	    	checkResult.style.color = 'red';
+	    }else if(!id.match(exp)){
+	    	checkResult.innerHTML = '숫자 포함 3~20자 이내로 작성해 주세요'
+	    	checkResult.style.color = 'red';
+	    }
+		
+	    else if(id.match(exp)) {
 		$.ajax({
 			type : 'post',
 			url : 'idDuplicate',
@@ -29,7 +42,7 @@ input {
 			},
 			dataType : 'text',
 			success : function(result) {
-				if (result == "ok") {
+				if (result == "ok") {				
 					checkResult.style.color = 'green';
 					checkResult.innerHTML = '멋진 아이디네요';
 				} else {
@@ -40,11 +53,30 @@ input {
 			error : function() {
 				console.log('오타 찾으세요')
 			}
-
 		});
-
 	}
-</script>
+	}
+	</script>
+	<script>
+	
+	function pwCheck(){
+
+		const pw = document.getElementById('pw').value;
+		const pwResult = document.getElementById('pw_input_result');
+		const exp2 = /^(?=.*[a-z])(?=.*\d)(?=.*[-_!*])[a-z\d-_!*]{8,20}$/; 
+
+		if(pw.match(exp2)){
+			pwResult.innerHTML = '좋습니다';
+			pwResult.style.color = 'green';
+			
+		}else{
+			pwResult.innerHTML = '8~20자리 소문자, 특수기호(-_!*), 숫자 포함해주세요';
+			pwResult.style.color = 'red';
+			
+		}
+		}
+	</script>
+
 
 </head>
 <body>
@@ -55,16 +87,19 @@ input {
 			style="background-color: rgb(191, 224, 196); border-radius: 1rem; margin-top: 100px;">
 			<h2 class="text-center">회원가입</h2>
 			<label for="m_id" class="text-start">아이디</label> 
-			<input class="form-control" type="text" name="m_id" id="m_id"
-				placeholder="아이디 20자이내" onblur="idDuplicate()"> 
-				<span id="m_id-dup-check"> </span><br>
+			<input class="form-control" type="text" name="m_id" id="id"
+				placeholder="아이디 20자이내" onblur="idCheck()" required> 
+				<div id="m_id-check"> </div>
+				
+				
 				
 				 <label id="m_password" class="text-start">비밀번호</label> 
-				 <input class="form-control" type="password" name="m_password" id="m_password"
-				placeholder="비밀번호 입력"> 
+				 <input class="form-control" type="password" name="m_password" id="pw"
+				placeholder="비밀번호 입력" onblur="pwCheck()" required> 
+				<div id="pw_input_result"></div>
 				
-				<label for="m_name" class="text-start">이름</label>
-				 <input class="form-control" type="text" name="m_name" id="m_name"> 
+				<label for="m_name" class="text-start" >이름</label>
+				 <input class="form-control" type="text" name="m_name" id="m_name" required size="20"> 
 				 
 				 <label for="m_email" class="text-start">이메일</label> 
 				 <input class="form-control" type="text" name="m_email" id="m_email"> 
@@ -110,4 +145,6 @@ input {
 		</div>
 	</form>
 </body>
+
+
 </html>

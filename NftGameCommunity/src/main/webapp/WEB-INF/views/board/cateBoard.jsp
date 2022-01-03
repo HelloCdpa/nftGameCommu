@@ -53,14 +53,16 @@
 			<th>작성자</th>
 			<th>
 			
-		<form action="/board/cateviewSort" method="get">
+		<form action="/board/cateSort" method="get">
 			<input type="hidden" name="cate_number" value="${c.cate_number}">
+			<input type="hidden" name="sort" value="1">
 			<input class="btn btn-link-dark" type="submit" value="조회수">
 			</form>
 			</th>
 			<th>
-			<form action="/board/catelikeSort" method="get">
+			<form action="/board/cateSort" method="get">
 			<input type="hidden" name="cate_number" value="${c.cate_number}">
+			<input type="hidden" name="sort" value="2">
 			<input class="btn btn-link-dark" type="submit" value="추천수">
 			</form>
 			</th>

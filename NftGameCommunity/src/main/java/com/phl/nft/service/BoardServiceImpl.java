@@ -218,26 +218,29 @@ public List<CateDTO> cateFindAll() {
 
 
 @Override
-public List<BoardDTO> viewSort() {
-	return br.viewSort();
+public List<BoardDTO> sort(int sort) {
+	if(sort == 1) {
+		List<BoardDTO> bList = br.viewSort();
+		return bList;		
+	}else {
+		List<BoardDTO> bList = br.likeSort();
+		return bList;
+		
+	}
+	
 }
 
 
 @Override
-public List<BoardDTO> likeSort() {
-	return br.likeSort();
-}
-
-
-@Override
-public List<BoardDTO> cateviewSort(int cate_number) {
-	return br.cateviewSort(cate_number);
-}
-
-
-@Override
-public List<BoardDTO> catelikeSort(int cate_number) {
-	return br.catelikeSort(cate_number);
+public List<BoardDTO> cateSort(int cate_number,int sort) {
+	if(sort == 1) {
+		List<BoardDTO> bList = br.cateviewSort(cate_number);
+		return bList;		
+	}else {
+		List<BoardDTO> bList = br.catelikeSort(cate_number);
+		return bList;
+		
+	}
 }
 	
 	

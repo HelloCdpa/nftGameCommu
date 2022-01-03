@@ -1,6 +1,7 @@
 package com.phl.nft.service;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import com.phl.nft.dto.MemberDTO;
@@ -24,5 +25,7 @@ public interface MemberService {
 	MemberDTO pointAll(String m_id);
 	void pointCharge(String m_id, int m_point);
 	void nftprofile(MemberDTO member);
+	String getAccessToken(String authorize_code);
+	HashMap<String, Object> getUserInfo(String access_Token);
 	
 }

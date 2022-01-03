@@ -108,40 +108,25 @@ public class BoardController {
 		return "/board/boardFindAll";
 	}
 	
-	@RequestMapping(value="viewSort", method=RequestMethod.GET)
-	public String viewSort(Model model) {
-		List<BoardDTO> bList = bs.viewSort();
-		model.addAttribute("bList", bList);
+	@RequestMapping(value="Sort", method=RequestMethod.GET)
+	public String Sort(Model model,@RequestParam int sort) {
 		
+		List<BoardDTO> bList =  bs.sort(sort);
+		model.addAttribute("bList", bList);
 		return "/board/boardFindAll";
+		
 	}
 	
-	@RequestMapping(value="likeSort", method=RequestMethod.GET)
-	public String likeSort(Model model) {
-		List<BoardDTO> bList = bs.likeSort();
-		model.addAttribute("bList", bList);
-		
-		return "/board/boardFindAll";
-	}
-	
-	@RequestMapping(value="cateviewSort", method=RequestMethod.GET)
-	public String cateviewSort(@RequestParam int cate_number,Model model) {
-		List<BoardDTO> bList = bs.cateviewSort(cate_number);
+	@RequestMapping(value="cateSort", method=RequestMethod.GET)
+	public String cateSort(@RequestParam int cate_number,@RequestParam int sort,Model model) {
+		List<BoardDTO> bList =  bs.cateSort(cate_number,sort);
 		model.addAttribute("bList", bList);
 		CateDTO cate = bs.cateName(cate_number);
 		model.addAttribute("c",cate);
+		
 		return "/board/cateBoard";
-	}
 	
-	@RequestMapping(value="catelikeSort", method=RequestMethod.GET)
-	public String catelikeSort(@RequestParam int cate_number,Model model) {
-		List<BoardDTO> bList = bs.catelikeSort(cate_number);
-		model.addAttribute("bList", bList);
-		CateDTO cate = bs.cateName(cate_number);
-		model.addAttribute("c",cate);
-		return "/board/cateBoard";
 	}
-	
 	
 	
 	

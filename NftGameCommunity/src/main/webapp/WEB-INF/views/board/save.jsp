@@ -14,7 +14,7 @@
   <div class="container" style="background-color: rgb(191, 224, 196); border-radius: 1rem; margin-top: 100px;">
   <h2 class="text-center"> 게시글 입력 페이지</h2>
   <form action="/board/save" method="post" enctype="multipart/form-data" class="gap-2 col-6 mx-auto">
-  작성자 : <input class="form-control" type="text" name="m_id" value="${sessionScope.loginId}" readonly="readonly" >
+  작성자 <input class="form-control" type="text" name="m_id" value="${sessionScope.loginId}" readonly="readonly" >
   
  <label for="cate_number">카테고리</label>
   <select name="cate_number" id="cate_number" class="form-control">
@@ -27,11 +27,11 @@
  
  
  <label for="b_title">제목</label>
- <input class="form-control" type="text" name="b_title" id="b_title">
+ <input class="form-control" type="text" name="b_title" id="b_title" required>
  
  
  <label for="b_contents">내용</label>
- <textarea class="form-control" rows="4" cols="60" name="b_contents" id="b_contents"></textarea>
+ <textarea class="form-control" rows="4" cols="60" name="b_contents" id="b_contents" required></textarea>
  <label for="b_file">파일첨부</label>
  <input class="form-control" type="file" name="b_file" id="b_file">
 

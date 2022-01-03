@@ -63,12 +63,15 @@ function Login() {
 			<th>작성자</th>
 			<th>
 			
-		<form action="/board/viewSort" method="get">
+		<form action="/board/Sort" method="get">
+			<input type="hidden" name="sort" value="1">
 			<input class="btn btn-link-dark" type="submit" value="조회수">
 			</form>
 			</th>
+			
 			<th>
-			<form action="/board/likeSort" method="get">
+			<form action="/board/Sort" method="get">
+			<input type="hidden" name="sort" value="2">
 			<input class="btn btn-link-dark" type="submit" value="추천수">
 			</form>
 			</th>

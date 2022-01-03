@@ -1,6 +1,7 @@
 package com.phl.nft.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -67,9 +68,17 @@ public class MemberController {
 		
 		return "redirect:/member/paging";
 	}
+
 	
 	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public String loginForm() {	
+	public String loginForm(@RequestParam(value = "code", required = false) String code)throws Exception {	
+		  System.out.println("#########" + code);
+		  String access_Token = ms.getAccessToken(code);
+	      System.out.println("###access_Token#### : " + access_Token);
+	      
+	      HashMap<String, Object> userInfo = ms.getUserInfo(access_Token);
+	      System.out.println("###userInfo#### : " + userInfo.get("email"));
+	      System.out.println("###nickname#### : " + userInfo.get("nickname"));
 		return "/member/login";
 	}
 	
@@ -160,5 +169,6 @@ public class MemberController {
 		return "index";
 	}
 	
-
+	
+	
 }
