@@ -1,6 +1,6 @@
 package com.phl.nft.service;
 
-import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,12 +20,10 @@ public interface MemberService {
 	public void delete(long m_number);
 	public String login(MemberDTO member);
 	MemberDTO mypage(String m_id);
-	void memberUpdate(MemberDTO member) throws IllegalStateException, IOException;
+	void memberUpdate(MemberDTO member);
 	List<PointDTO> pointView(String m_id);
 	MemberDTO pointAll(String m_id);
 	void pointCharge(String m_id, int m_point);
 	void nftprofile(MemberDTO member);
-	String getAccessToken(String authorize_code);
-	HashMap<String, Object> getUserInfo(String access_Token);
 	
 }

@@ -61,12 +61,9 @@
 										<input type="hidden" id="like_check" value="${like.like_check}">
 										<img class="rounded-circle likeimg" id="likeimg" src="/resources/img/좋아요전.png"
 											width="60px" height="60px"> ${b.like_count}
-
 									</div>
 								</c:if>
 							</td>
-
-
 						</tr>
 					</tbody>
 				</table>
@@ -103,11 +100,9 @@
 
 		</body>
 		<script>
-
-
 			$(document).ready(function () {
-				var like_count = document.getElementById('like_count')
-				var likeval = document.getElementById('like_check').value
+				let like_count = document.getElementById('like_count')
+				let likeval = document.getElementById('like_check').value
 				const b_number = '${b.b_number}';
 				const m_id = "${sessionScope.loginId}";
 				console.log(m_id);
@@ -122,7 +117,6 @@
 					likeimg.src = "/resources/img/좋아요전.png";
 
 				}
-
 				// 좋아요 버튼을 클릭 시 실행되는 코드
 				$(".likeimg").on("click", function () {
 					$.ajax({

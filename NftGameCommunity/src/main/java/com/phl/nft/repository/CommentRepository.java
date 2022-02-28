@@ -30,5 +30,6 @@ public class CommentRepository {
 		 map.put("p_point", p_point);
 		 map.put("p_type", p_type);
 		sql.insert("point.pointSave",map);
+		sql.update("Member.updatePoint", map);
 	}
 }

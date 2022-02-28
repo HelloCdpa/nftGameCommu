@@ -34,7 +34,6 @@
  <textarea class="form-control" rows="4" cols="60" name="b_contents" id="b_contents" required></textarea>
  <label for="b_file">파일첨부</label>
  <input class="form-control" type="file" name="b_file" id="b_file">
-
  
  <input class="btn btn-outline-success m-3" type="submit" value="글 작성">
 </form>

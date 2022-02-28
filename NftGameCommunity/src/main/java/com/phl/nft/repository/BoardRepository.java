@@ -18,10 +18,8 @@ public class BoardRepository {
 	@Autowired
 	private SqlSessionTemplate sql;
 
-	public void saveFile(BoardDTO board) {
+	public void save(BoardDTO board) {
 		sql.insert("Board.boardSave", board);
-		
-
 	}
 
 	public List<BoardDTO> boardFindAll() {
@@ -62,13 +60,6 @@ public class BoardRepository {
 	}
 
 	
-	
-	public void updatePoint(String id, int point) {
-	    Map<String, Object> map = new HashMap<String, Object>();
-	    map.put("id", id);
-	    map.put("point", point);
-	    sql.update("Member.updatePoint", map);
-	    }
 
 	public void boardPoint(String m_id, int p_point, String p_type) {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -76,6 +67,7 @@ public class BoardRepository {
 		 map.put("p_point", p_point);
 		 map.put("p_type", p_type);
 		sql.insert("point.pointSave",map);
+		sql.update("Member.updatePoint", map);
 		
 	}
 

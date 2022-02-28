@@ -33,8 +33,7 @@
  	</select>
  	<update id="memberUpdate" parameterType="member">
  	update member_table set 
- 	m_email = #{m_email}, m_phone =#{m_phone}, 
- 	m_profilename = #{m_profilename} where m_number=#{m_number}
+ 	m_email = #{m_email}, m_phone =#{m_phone} where m_number=#{m_number}
  	
  	
  	</update>
@@ -60,8 +59,8 @@
  	
  	
  	<update id="updatePoint"  parameterType="java.util.HashMap">
-	update member_table set m_point = m_point + #{point}
-	where m_id = #{id}
+	update member_table set m_point = m_point + #{p_point}
+	where m_id = #{m_id}
 	</update>
  	
  	

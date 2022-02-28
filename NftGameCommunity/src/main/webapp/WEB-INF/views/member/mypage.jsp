@@ -7,10 +7,14 @@
 	<link href="/resources/css/test.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script>
 	function update() {
 		 const pw = document.getElementById('m_password').value
-				if(pw==${m.m_password}){
+		 const pwCheck = document.getElementById('m_password_check').value
+			console.log(pw + "확인" +pwCheck)
+			
+				if(pw=="${m.m_password}"){
 				alert('회원정보 수정이 완료되었습니다.');
 				update_form.submit();
 				
@@ -20,16 +24,15 @@
 	}
 
 </script>
-
-
-
 </head>
+
 <body>
      <jsp:include page="../header.jsp"></jsp:include>
 	<div class="container text-center" style="background-color: rgb(191, 224, 196); border-radius: 1rem; margin-top: 100px;">
 	<h2>마이페이지</h2>
 	<form action="/member/memberUpdate" method="post"
-		enctype="multipart/form-data" name="update_form" class="gap-2 col-6 mx-auto">
+		name="update_form" class="gap-2 col-6 mx-auto">
+		<input type="hidden" id="m_password_check" name="m_password" value="${m.m_password}">
 		<table class="table">
 
 			<tr>
@@ -42,8 +45,9 @@
 					readonly="readonly"></td>
 			</tr>
 			<tr>
+			
 				<td>비밀번호</td>
-				<td><input class="form-control" type="password" name="m_password" id="m_password" placeholder ="비밀번호를 입력하세요"></td>
+				<td><input class="form-control" type="password" id="m_password" placeholder ="비밀번호를 입력하세요"></td>
 			</tr>
 
 			<tr>
@@ -72,9 +76,10 @@
 			</tr>
 
 
-
+		
 		</table>
 	</form>
+		
 		</div>
 
 
@@ -89,4 +94,7 @@
 
 
 </body>
+
+
+
 </html>

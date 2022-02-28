@@ -38,7 +38,6 @@ public class BoardController {
 	}
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public String save(@ModelAttribute BoardDTO board, Model model) throws IllegalStateException, IOException{
-		
 		bs.boardSave(board);
 		return "redirect:/board/paging";
 	}
@@ -61,9 +60,10 @@ public class BoardController {
 	model.addAttribute("bList", boardList);
 	model.addAttribute("paging", paging);
 	
+	// 새로운 게시글에 1일동안 new 로고를 붙임 
 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     Calendar cal = Calendar.getInstance();
-    cal.add(Calendar.DAY_OF_MONTH, -1); //1일간 보이도록 하기위해서.
+    cal.add(Calendar.DAY_OF_MONTH, -1); //1일간 보이도록 하기위해서. 현재 월의 날짜
     String nowday = format.format(cal.getTime());
     
     model.addAttribute("nowday",nowday);

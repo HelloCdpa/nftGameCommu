@@ -11,7 +11,7 @@
     
   <script>
   
-  var IMP = window.IMP; 
+  const IMP = window.IMP; 
   IMP.init('imp45182196'); 
     function requestPay1() {
       // IMP.request_pay(param, callback) 결제창 호출

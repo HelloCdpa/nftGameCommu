@@ -65,7 +65,7 @@ public class MemberRepository {
 			
 			return sql.selectOne("Member.pointAll", m_id);
 		}
-
+		// 회원 포인트 저장
 		public void pointCharge(String m_id, int m_point) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			 map.put("m_id", m_id);
@@ -73,6 +73,7 @@ public class MemberRepository {
 			sql.update ("Member.pointCharge",map);
 		}
 	
+		//이력 저장
 		public void memberPointCharge(String m_id, int p_point, String p_type) {
 		    Map<String, Object> map = new HashMap<String, Object>();
 		    map.put("m_id", m_id);

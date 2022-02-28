@@ -71,14 +71,7 @@ public class MemberController {
 
 	
 	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public String loginForm(@RequestParam(value = "code", required = false) String code)throws Exception {	
-		  System.out.println("#########" + code);
-		  String access_Token = ms.getAccessToken(code);
-	      System.out.println("###access_Token#### : " + access_Token);
-	      
-	      HashMap<String, Object> userInfo = ms.getUserInfo(access_Token);
-	      System.out.println("###userInfo#### : " + userInfo.get("email"));
-	      System.out.println("###nickname#### : " + userInfo.get("nickname"));
+	public String loginForm() {	
 		return "/member/login";
 	}
 	
@@ -112,7 +105,7 @@ public class MemberController {
 	
 
 	@RequestMapping(value = "memberUpdate", method = RequestMethod.POST)
-	public String memberUpdate(Model model,@ModelAttribute MemberDTO member) throws IllegalStateException, IOException{	
+	public String memberUpdate(Model model,@ModelAttribute MemberDTO member){	
 		
 		ms.memberUpdate(member);
 		return "index" ;

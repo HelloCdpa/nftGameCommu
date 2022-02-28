@@ -12,7 +12,6 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <title>login</title>
 </head>
 <body>
@@ -29,9 +28,7 @@
 				placeholder="비밀번호 입력" name="m_password" id="m_password" required>
 				<input class="btn btn-outline-success" type="submit" value="로그인"> 
 		</form>
-				<a class="p-2"
-				href="https://kauth.kakao.com/oauth/authorize?client_id=f4c61a066e9b5b3d7b110bdc4a570043&redirect_uri=http://localhost:8081/&response_type=code">
-				<img src="//k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="222"/></a>
+			
 	</div>
 </body>
    

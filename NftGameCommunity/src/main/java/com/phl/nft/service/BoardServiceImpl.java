@@ -24,23 +24,19 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void boardSave(BoardDTO board)throws IllegalStateException, IOException{
 		
-		br.updatePoint(board.getM_id(),50);
 		br.boardPoint(board.getM_id(),50,"게시물 적립");
 		
 		MultipartFile b_file = board.getB_file();
 		String b_filename = b_file.getOriginalFilename();
 		b_filename = System.currentTimeMillis() + "-" + b_filename;
-		System.out.println("b_filename: " + b_filename);
 		// 파일 저장하기 
 		String savePath = "D:\\development_Phl\\source\\spring\\NftGameCommunity\\src\\main\\webapp\\resources\\board_uploadfile\\"+b_filename;
 		if(!b_file.isEmpty()) {
 			b_file.transferTo(new File(savePath));
 		} 
-		
 		board.setB_filename(b_filename);
-		br.saveFile(board);
 		
-		
+		br.save(board);
 	}
 	
 
@@ -63,9 +59,6 @@ public class BoardServiceImpl implements BoardService {
 		pagingParam.put("limit", PAGE_LIMIT);
 
 	List<BoardDTO> pagingList = br.boardPagingList1(pagingParam);
-	for(BoardDTO b: pagingList) {
-	System.out.println(b.toString());
-	}
 	return pagingList;
 	}
 
@@ -89,7 +82,6 @@ public class BoardServiceImpl implements BoardService {
 	public void boardDelete(long b_number) {
 		br.boardDelete(b_number);
 	}
-
 
 
 	@Override

@@ -15,10 +15,10 @@
 
 	<table class="table table-striped table-hover" style="margin-top: 100px;">
 		<tr>	
-			<th>회원번호</th>
-			<th>아이디</th>
-			<th>비밀번호</th>
-			<th>이름</th>
+			<th scope="col">회원번호</th>
+			<th scope="col">아이디</th>
+			<th scope="col">비밀번호</th>
+			<th scope="col">이름</th>
 			<th>이메일</th>
 			<th>휴대폰 번호</th>
 			<th>프로필사진</th>
